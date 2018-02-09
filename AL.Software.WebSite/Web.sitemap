@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://myleancher.ru/Default.aspx</loc>
+  </url>
+  <url>
+    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=2</loc>
+  </url>
+  <url>
+    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=3</loc>
+  </url>
+  <url>
+    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=4</loc>
+  </url>
+  <url>
+    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=5</loc>
+  </url>
+  <url>
+    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=6</loc>
+  </url>
+</urlset>

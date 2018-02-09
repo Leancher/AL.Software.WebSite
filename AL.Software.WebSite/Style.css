@@ -1,0 +1,141 @@
+﻿:root {
+    --MyYellow: #F2D13E;
+    --MyDarkGrey: #3E454C;
+    --MyBrightGrey: #F6F6F6;
+    --GlobalMarginLeft: 2%;
+    --GlobalWidth: 94%;
+    --GlobalFont: Calibri;
+    --HeaderHeight: 108px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-left: var(--GlobalMarginLeft);
+    margin-top: 9px;
+    width: var(--GlobalWidth);
+    height: var(--HeaderHeight);
+    background-color: var(--MyYellow);
+}
+
+.HeaderTitle {
+    font-family: var(--GlobalFont);
+    font-weight: bold;
+    font-size: 72px;
+    color: var(--MyDarkGrey);
+    padding-left: 18px;
+}
+
+.Body {
+    width: var(--GlobalWidth);
+    height: 100%;
+    margin-left: var(--GlobalMarginLeft);
+}
+
+.MainMenuLocate {
+    display: inline-block;
+    width: 178px;
+    vertical-align: top;
+    margin-top:18px;
+}
+
+.ContentLocate {
+    display: inline-block;
+    width: calc(100% - 202px);
+    margin-top: 18px;
+    margin-left:18px;
+}
+
+.CategoryCaption {
+    display: block;
+    text-align: center;
+    font-family: var(--GlobalFont);
+    font-weight: bold;
+    font-size: 45px;
+    background-color: var(--MyBrightGrey);
+    width:100%;
+}
+
+.ContentCaption{
+    display: block;
+    text-align: center;
+    font-family: var(--GlobalFont);
+    font-weight: bold;
+    font-size: 27px;
+    background-color: var(--MyBrightGrey);
+    width:100%;
+}
+
+.TileGrid {
+    display: block;
+    text-align: center;
+    margin-top:36px;
+}
+
+.TileCell {
+    text-align: center;
+    width: 302px;
+    display: inline-block;
+    margin-left:18px;
+    margin-right:18px;
+    padding-bottom: 18px;  
+    background-color: var(--MyDarkGrey);
+}
+
+    .TileCell a {
+        font: bold 16px var(--GlobalFont);
+        color: white;
+        text-decoration: none;
+    }
+
+    .TileCell a:hover {
+        color: var(--MyYellow);
+    }
+
+.PhotoGrid {
+    display: block;
+    margin-top: 18px;
+}
+
+.PhotoCell {
+    text-align: center;
+    width: 142px;
+    margin-top:18px;
+    margin-left: 9px;
+    margin-right: 9px;
+    display: inline-block;
+}
+
+    .PhotoCell a {
+        text-decoration: none;
+    }
+
+    .PhotoCell a:hover {
+        color: var(--MyYellow);
+    }
+
+.CurrentPhoto {
+    /*height: calc(100% - var(--HeaderHeight));
+    width: calc(100% - var(--HeaderHeight));*/
+    width: calc(100% - var(--HeaderHeight));
+    ;
+}
+
+div#MainMenu a {
+    width: 160px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    padding-left:18px;
+    
+
+    text-decoration: none;
+    font: bold 1.1em var(--GlobalFont);
+    background-color: var(--MyBrightGrey);
+    color: Black;
+}
+
+    div#MainMenu a:hover {
+        background-color: var(--MyDarkGrey);
+        color: var(--MyYellow);
+    }

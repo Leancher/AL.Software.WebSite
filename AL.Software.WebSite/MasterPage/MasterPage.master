@@ -1,0 +1,32 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+<%@ Register TagPrefix="Site" TagName="MainMenu" Src="~/MasterPage/MainMenu.ascx" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Leancher web site</title>
+    <asp:ContentPlaceHolder ID="MetaDescription" runat ="server" />
+    <link rel="stylesheet" href="../Style.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="header">
+            <div class="HeaderTitle">
+                <asp:ContentPlaceHolder ID="LogoPlaceHolder" runat ="server"/>
+                LEANCHER 
+            </div>
+        </div>
+        <div class="Body">
+            <div class="MainMenuLocate">
+                <div id="MainMenu">
+                    <Site:MainMenu runat="server" />
+                </div>
+            </div>
+            <div class="ContentLocate">
+                <asp:ContentPlaceHolder ID="PageHolder" runat="server"/>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

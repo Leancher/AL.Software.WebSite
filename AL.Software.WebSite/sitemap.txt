@@ -5,18 +5,18 @@
     <loc>http://myleancher.ru/Default.aspx</loc>
   </url>
   <url>
-    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=2</loc>
+    <loc>http://myleancher.ru/myproject</loc>
   </url>
   <url>
-    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=3</loc>
+    <loc>http://myleancher.ru/repaircar</loc>
   </url>
   <url>
-    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=4</loc>
+    <loc>http://myleancher.ru/myphoto</loc>
   </url>
   <url>
-    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=5</loc>
+    <loc>http://myleancher.ru/history</loc>
   </url>
   <url>
-    <loc>http://myleancher.ru/Page/!ContentPage.aspx?NunberPage=6</loc>
+    <loc>http://myleancher.ru/mynote</loc>
   </url>
 </urlset>

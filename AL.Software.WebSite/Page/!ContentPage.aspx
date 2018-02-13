@@ -12,7 +12,15 @@
     <div class="CategoryCaption">
         <% Response.Write(CategoryCaption) %>
     </div>
-    <% Response.Write(ShowExceprion) %>
+    <% Response.Write(ShowExceprion)
+        Dim List As String()
+        Dim Path As String = Config.AppPath + "Pictures\Photo\album01Preview"
+        List = My.Computer.FileSystem.GetFiles(Path).ToArray
+        For Each a In List
+            Response.Write(a)
+            Response.Write("</br>")
+        Next
+        %>
    <%-- <img class="CurrentPhoto" src="../Pictures/Photo/Album01/photo05.JPG" />--%>
     <asp:PlaceHolder ID="ContentHolder" runat="server" />
 </asp:Content>

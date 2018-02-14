@@ -5,13 +5,13 @@
             Dim TypeContent As String = "ShowAlbum"
             Dim Database As New DatabaseConnect()
             Database.DatabaseOpen()
-            For CurrentTile = 1 To Database.GetCountRow(Config.TableAlbumPhoto)
+            For CurrentTile = 1 To Database.GetCountRow(Config.CategoryPhotoAlbums)
                 Response.Write("<div class='TileCell'>")
                 Response.Write("<a href ='./" + Config.ContentPage + "?" + TypeContent + "=" + CurrentTile.ToString + "'>")
 
                 Response.Write("<div>")
                 Response.Write("<img src='../" + Config.PreviewFolder + "/album0" + CurrentTile.ToString + ".jpg' />")
-                Response.Write(Database.GetRecordDB(Config.TableAlbumPhoto, CurrentTile, 1))
+                Response.Write(Database.GetRecordDB(Config.CategoryPhotoAlbums, CurrentTile, 1))
                 Response.Write("</div>")
 
                 Response.Write("</a>")

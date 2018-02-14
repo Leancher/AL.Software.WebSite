@@ -10,10 +10,10 @@ Public Class Config
 
     Public Shared TypeContent As String = ""
 
-    Public Shared TableMyProjects As String = "MyProjects"
     Public Shared TableCategory As String = "ListCategory"
-    Public Shared TableAlbumPhoto As String = "PhotoAlbums"
-    Public Shared TableHistory As String = "History"
-    Public Shared TableMyNote As String = "MyNote"
-    Public Shared TableRepairCar As String = "RepairCar"
+    Public Shared CategoryMyProjects As String = "MyProjects"
+    Public Shared CategoryPhotoAlbums As String = "PhotoAlbums"
+    Public Shared CategoryHistory As String = "History"
+    Public Shared CategoryMyNote As String = "MyNote"
+    Public Shared CategoryRepairCar As String = "RepairCar"
 End Class

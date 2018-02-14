@@ -25,17 +25,17 @@
                 LogoPicName = "../" + Config.PictureFolder + "/Logo-" + PageName + ".png"
                 PageName = "Cat-" + PageName + ".ascx"
                 Config.TypeContent = ""
-                If NumberCategory = 2 Then Config.TypeContent = "project"
-                If NumberCategory = 3 Then Config.TypeContent = "repaircar"
-                If NumberCategory = 4 Then Config.TypeContent = "PhotoAlbum"
+                If NumberCategory = 2 Then Config.TypeContent = Config.CategoryMyProjects
+                If NumberCategory = 3 Then Config.TypeContent = Config.CategoryRepairCar
+                If NumberCategory = 4 Then Config.TypeContent = Config.CategoryPhotoAlbums
                 If Config.TypeContent <> "" Then PageName = "ShowTileGrid.ascx"
             Else
-                If Request.QueryString("ShowProject") <> Nothing Then
-                    PageDescription = Database.GetDescriptionPage(Config.TableMyProjects, Request.QueryString("ShowProject"))
-                    PageName = "Sub-Project0" + Request.QueryString("ShowProject") + ".ascx"
+                If Request.QueryString(Config.CategoryMyProjects) <> Nothing Then
+                    PageDescription = Database.GetDescriptionPage(Config.CategoryMyProjects, Request.QueryString(Config.CategoryMyProjects))
+                    PageName = "Sub-Project0" + Request.QueryString(Config.CategoryMyProjects) + ".ascx"
                 End If
-                If Request.QueryString("PhotoAlbum") <> Nothing Then
-                    PageDescription = Database.GetDescriptionPage(Config.TableAlbumPhoto, Request.QueryString("PhotoAlbum"))
+                If Request.QueryString(Config.CategoryPhotoAlbums) <> Nothing Then
+                    PageDescription = Database.GetDescriptionPage(Config.CategoryPhotoAlbums, Request.QueryString(Config.CategoryPhotoAlbums))
                     PageName = "ViewerPhotoAlbum.ascx"
                 End If
                 If Request.QueryString("ShowPhoto") <> Nothing Then PageName = "ViewerCurrentPhoto.ascx"

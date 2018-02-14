@@ -3,6 +3,7 @@
 
 #My ignore
 Photo/
+*.lnk
 
 # User-specific files
 *.suo

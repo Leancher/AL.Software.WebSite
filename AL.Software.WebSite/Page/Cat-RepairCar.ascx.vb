@@ -1,5 +1,4 @@
-﻿
-Partial Class Page_03_RepairCar
-    Inherits System.Web.UI.UserControl
+﻿Partial Class Page_03_RepairCar
+    Inherits UserControl
 
 End Class

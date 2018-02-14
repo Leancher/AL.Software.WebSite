@@ -4,7 +4,7 @@
         For Each CurrentPhoto In ListPhoto
             Response.Write("<div class='PhotoCell'>")
 
-            Response.Write("<a href ='./" + Config.ContentPage + ".aspx?ShowPhoto=" + CurrentPhoto + "&AlbumName=album0" + NumberAlbum + "'>")
+            Response.Write("<a href ='./" + Config.ContentPage + "?ShowPhoto=" + CurrentPhoto + "&AlbumName=album0" + NumberAlbum + "'>")
 
             Response.Write("<div>")
             Response.Write("<img src='../Pictures/Photo/album0" + NumberAlbum + "Preview/" + CurrentPhoto + "' />")

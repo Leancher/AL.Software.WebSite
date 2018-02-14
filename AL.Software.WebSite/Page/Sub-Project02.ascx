@@ -15,4 +15,4 @@
 - подключение концевиков педали тормоза и дверей<br />
 
 Схема, плата и прошивка на <a href="https://github.com/Leancher/Al.Car.GeneralLock">GitHub</a><br />
-<img src="../Pictures/Photo/Projects/Project02Photo01.jpg"
+<img src="../Pictures/Projects/Project02Photo01.jpg"

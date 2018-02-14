@@ -16,21 +16,26 @@
         Dim Database As New DatabaseConnect()
         Database.DatabaseOpen()
         Try
-            If Request.QueryString("NumberPage") <> Nothing Then
-                Dim NumberPage = CInt(Request.QueryString("NumberPage"))
+            If Request.QueryString("category") <> Nothing Then
+                Dim NumberCategory = CInt(Request.QueryString("category"))
 
-                CategoryCaption = Database.GetRecordDB(Config.TableCategory, NumberPage, 1)
-                PageName = Database.GetRecordDB(Config.TableCategory, NumberPage, 2)
-                PageDescription = Database.GetDescriptionPage(Config.TableCategory, NumberPage)
+                CategoryCaption = Database.GetRecordDB(Config.TableCategory, NumberCategory, 1)
+                PageName = Database.GetRecordDB(Config.TableCategory, NumberCategory, 2)
+                PageDescription = Database.GetDescriptionPage(Config.TableCategory, NumberCategory)
                 LogoPicName = "../" + Config.PictureFolder + "/Logo-" + PageName + ".png"
                 PageName = "Cat-" + PageName + ".ascx"
+                Config.TypeContent = ""
+                If NumberCategory = 2 Then Config.TypeContent = "project"
+                If NumberCategory = 3 Then Config.TypeContent = "repaircar"
+                If NumberCategory = 4 Then Config.TypeContent = "PhotoAlbum"
+                If Config.TypeContent <> "" Then PageName = "ShowTileGrid.ascx"
             Else
                 If Request.QueryString("ShowProject") <> Nothing Then
                     PageDescription = Database.GetDescriptionPage(Config.TableMyProjects, Request.QueryString("ShowProject"))
                     PageName = "Sub-Project0" + Request.QueryString("ShowProject") + ".ascx"
                 End If
-                If Request.QueryString("ShowAlbum") <> Nothing Then
-                    PageDescription = Database.GetDescriptionPage(Config.TableAlbumPhoto, Request.QueryString("ShowAlbum"))
+                If Request.QueryString("PhotoAlbum") <> Nothing Then
+                    PageDescription = Database.GetDescriptionPage(Config.TableAlbumPhoto, Request.QueryString("PhotoAlbum"))
                     PageName = "ViewerPhotoAlbum.ascx"
                 End If
                 If Request.QueryString("ShowPhoto") <> Nothing Then PageName = "ViewerCurrentPhoto.ascx"

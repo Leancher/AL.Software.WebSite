@@ -8,6 +8,8 @@ Public Class Config
     Public Shared PageMyProjects As String = "2"
     Public Shared PageMyPhoto As String = "4"
 
+    Public Shared TypeContent As String = ""
+
     Public Shared TableMyProjects As String = "MyProjects"
     Public Shared TableCategory As String = "ListCategory"
     Public Shared TableAlbumPhoto As String = "PhotoAlbums"

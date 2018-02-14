@@ -15,5 +15,5 @@
 <br />
 Исходный код приложения на <a href="https://github.com/Leancher/AL.Software.StartingEngine.AndApp">GitHub</a>
 <br /><br />
-<img src="../Pictures/Photo/Projects/Project03Photo01.png" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<img src="../Pictures/Photo/Projects/Project03Photo02.png" />
+<img src="../Pictures/Projects/Project03Photo01.png" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<img src="../Pictures/Projects/Project03Photo02.png" />

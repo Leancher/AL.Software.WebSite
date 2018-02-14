@@ -9,4 +9,4 @@
 Версия 3 выполнена на одной плате, которая пока не собрана и не проверена.<br />
 
 Схема, плата и прошивка на <a href="https://github.com/Leancher/AL.Car.StartingEngine">GitHub</a><br />
-<img src="../Pictures/Photo/Projects/Project01Photo01.jpg" />
+<img src="../Pictures/Projects/Project01Photo01.jpg" />

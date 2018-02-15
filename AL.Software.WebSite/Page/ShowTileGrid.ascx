@@ -8,7 +8,7 @@
             Database.DatabaseOpen()
             For CurrentTile = 1 To Database.GetCountRow(Config.TypeContent)
                 Response.Write("<div class='TileCell'>")
-                Response.Write("<a href ='./" + Config.ContentPage + "?" + Config.TypeContent + "=" + CurrentTile.ToString + "'>")
+                Response.Write("<a href ='./" + Config.DefaultPage + "?" + Config.TypeContent + "=" + CurrentTile.ToString + "'>")
                 Response.Write("<div>")
                 'Получаем полный путь для проверки наличия файла
                 PhotoPath = Config.AppPath + "Pictures\Preview\" + Config.TypeContent + "0" + CurrentTile.ToString + ".jpg"

@@ -6,7 +6,7 @@
             Database.DatabaseOpen()
             For CurrentTile = 1 To Database.GetCountRow(Config.CategoryMyProjects)
                 Response.Write("<div class='TileCell'>")
-                Response.Write("<a href ='./" + Config.ContentPage + "?ShowProject=" + CurrentTile.ToString + "'>")
+                Response.Write("<a href ='./" + Config.DefaultPage + "?ShowProject=" + CurrentTile.ToString + "'>")
                 Response.Write("<div>")
                 Response.Write("<img src='../" + Config.PreviewFolder + "/Project0" + CurrentTile.ToString + ".jpg'>")
                 Response.Write(Database.GetRecordDB(Config.CategoryMyProjects, CurrentTile, 1))

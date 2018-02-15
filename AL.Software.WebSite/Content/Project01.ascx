@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Sub-Project01.ascx.vb" Inherits="Page_Sub_Project01" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Project01.ascx.vb" Inherits="Page_Sub_Project01" %>
     <div class="ContentCaption">
         Модуль GSM для управления двигателем автомобиля
     </div>

@@ -2,7 +2,7 @@
 
 Public Class Config
     Public Shared AppPath As String = AppDomain.CurrentDomain.BaseDirectory
-    Public Shared ContentPage As String = "!ContentPage.aspx"
+    Public Shared DefaultPage As String = "Default.aspx"
     Public Shared PictureFolder As String = "Pictures"
     Public Shared PreviewFolder As String = "Pictures/Preview"
     Public Shared PageMyProjects As String = "2"

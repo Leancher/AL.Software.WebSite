@@ -7,7 +7,7 @@
             Database.DatabaseOpen()
             For CurrentTile = 1 To Database.GetCountRow(Config.CategoryPhotoAlbums)
                 Response.Write("<div class='TileCell'>")
-                Response.Write("<a href ='./" + Config.ContentPage + "?" + TypeContent + "=" + CurrentTile.ToString + "'>")
+                Response.Write("<a href ='./" + Config.DefaultPage + "?" + TypeContent + "=" + CurrentTile.ToString + "'>")
 
                 Response.Write("<div>")
                 Response.Write("<img src='../" + Config.PreviewFolder + "/album0" + CurrentTile.ToString + ".jpg' />")

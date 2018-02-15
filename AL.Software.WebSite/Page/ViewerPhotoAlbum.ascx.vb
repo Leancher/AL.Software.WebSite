@@ -5,7 +5,7 @@ Partial Class Page_ViewerPhotoAlbum
     Public NumberAlbum As String
     Private Sub Page_ViewerPhotoAlbum_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim Index As Integer = 0
-        NumberAlbum = Request.QueryString("PhotoAlbum")
+        NumberAlbum = Request.QueryString(Config.CategoryPhotoAlbums)
         Dim Path As String = Config.AppPath + "Pictures\Photo\Album0" + NumberAlbum + "Preview"
         Try
             ListPhoto = IO.Directory.GetFiles(Path)

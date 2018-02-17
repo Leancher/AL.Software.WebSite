@@ -5,10 +5,6 @@ Public Class Config
     Public Shared DefaultPage As String = "Default.aspx"
     Public Shared PictureFolder As String = "Pictures"
     Public Shared PreviewFolder As String = "Pictures/Preview"
-    Public Shared PageMyProjects As String = "2"
-    Public Shared PageMyPhoto As String = "4"
-
-    Public Shared TypeContent As String = ""
 
     Public Shared TableCategory As String = "ListCategory"
     Public Shared CategoryMyProjects As String = "MyProjects"

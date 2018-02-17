@@ -117,10 +117,7 @@
     }
 
 .CurrentPhoto {
-    /*height: calc(100% - var(--HeaderHeight));
-    width: calc(100% - var(--HeaderHeight));*/
-    width: calc(100% - var(--HeaderHeight));
-    ;
+    width: 100%;
 }
 
 div#MainMenu a {

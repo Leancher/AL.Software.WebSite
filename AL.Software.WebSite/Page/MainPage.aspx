@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/MasterPage/MasterPage.master" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="Page_Default" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/MasterPage/MasterPage.master" AutoEventWireup="false" CodeFile="MainPage.aspx.vb" Inherits="Page_Default" %>
 
 <asp:Content id="Content0" ContentPlaceHolderID ="MetaDescription" runat="server">
     <% Response.Write(PageDescription) %>

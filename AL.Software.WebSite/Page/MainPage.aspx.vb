@@ -1,6 +1,6 @@
 ﻿Partial Class Page_Default
     Inherits Page
-    Public PageName As String
+    Public PageName As String = ""
     Public CategoryCaption As String
     Public LogoPicName As String
     Public PageDescription As String
@@ -45,6 +45,7 @@
                 End If
                 If Request.QueryString("ShowPhoto") <> Nothing Then PageName = "ViewerCurrentPhoto.ascx"
             End If
+            If PageName = "" Then PageName = "Cat-Main.ascx"
             Content = Page.LoadControl(PageName)
         Catch ex As Exception
             Content = Page.LoadControl("Page404.ascx")

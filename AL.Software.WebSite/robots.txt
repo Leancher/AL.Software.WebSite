@@ -1,1 +1,5 @@
 Sitemap: http://myleancher.ru/Web.sitemap
+
+User-Agent: *
+Disallow:
+Host: http://www.myleancher.ru

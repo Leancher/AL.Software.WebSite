@@ -5,7 +5,7 @@
     <loc>http://myleancher.ru/Default.aspx</loc>
   </url>
   <url>
-    <loc>http://myleancher.ru/myproject</loc>
+    <loc>http://myleancher.ru/myprojects</loc>
   </url>
   <url>
     <loc>http://myleancher.ru/repaircar</loc>

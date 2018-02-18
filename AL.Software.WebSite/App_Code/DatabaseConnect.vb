@@ -27,14 +27,13 @@ Public Class DatabaseConnect
         End Try
     End Function
 
-    Public Function GetCategoryValue(CategoryName As String, Type As Integer) As String
+    Public Function GetCategoryProperty(CatName As String, CatProperty As String) As String
         Try
             Command = Database.CreateCommand()
-            Command.CommandText = "SELECT * FROM " + Config.TableCategory + " WHERE CatName LIKE '" + CategoryName + "'"
+            Command.CommandText = "SELECT * FROM " + Config.TableCategory + " WHERE Name LIKE '" + CatName + "'"
             Dim ReadItem = Command.ExecuteReader()
             While ReadItem.Read()
-                If Type = 1 Then Return ReadItem.Item("CatCaption").ToString
-                If Type = 2 Then Return ReadItem.Item("IsTileGrid").ToString
+                Return ReadItem.Item(CatProperty).ToString
             End While
         Catch ex As Exception
             Return ex.ToString
@@ -42,42 +41,13 @@ Public Class DatabaseConnect
         Return ""
     End Function
 
-    Public Function GetMenuItem(Type As Integer, NumberRow As Integer) As String
+    Public Function GetDatabaseItem(NameTable As String, ID As Integer, ItemProperty As String) As String
         Try
             Command = Database.CreateCommand()
-            Command.CommandText = "SELECT * FROM " + Config.TableCategory + " WHERE ID=" + NumberRow.ToString
+            Command.CommandText = "SELECT * FROM " + NameTable + " WHERE ID=" + ID.ToString
             Dim ReadItem = Command.ExecuteReader()
             While ReadItem.Read()
-                If Type = 1 Then Return ReadItem.Item("CatCaption").ToString
-                If Type = 2 Then Return ReadItem.Item("CatName").ToString
-            End While
-        Catch ex As Exception
-            Return ex.ToString
-        End Try
-        Return ""
-    End Function
-
-    Public Function GetRecordDB(NameTable As String, NumberRow As Integer, NumberColumn As Integer) As String
-        Try
-            Command = Database.CreateCommand()
-            Command.CommandText = "SELECT * FROM " + NameTable + " WHERE ID=" + NumberRow.ToString
-            Dim ReadItem = Command.ExecuteReader()
-            While ReadItem.Read()
-                Return ReadItem.GetValue(NumberColumn)
-            End While
-        Catch ex As Exception
-            Return ex.ToString
-        End Try
-        Return ""
-    End Function
-
-    Public Function GetDescriptionPage(NameTable As String, Category As String) As String
-        Try
-            Command = Database.CreateCommand()
-            Command.CommandText = "SELECT * FROM " + NameTable + " WHERE CatName LIKE '" + Category + "'"
-            Dim ReadItem = Command.ExecuteReader()
-            While ReadItem.Read()
-                Return ReadItem.Item("Description").ToString
+                Return ReadItem.Item(ItemProperty).ToString
             End While
         Catch ex As Exception
             Return ex.ToString

@@ -12,7 +12,5 @@
     <div class="CategoryCaption">
         <% Response.Write(Caption) %>
     </div>
-    <% Response.Write(ShowException) %>
-   <%-- <img class="CurrentPhoto" src="../Pictures/Photo/Album01/photo05.JPG" />--%>
     <asp:PlaceHolder ID="ContentHolder" runat="server" />
 </asp:Content>

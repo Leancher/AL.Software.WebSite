@@ -1,4 +1,4 @@
-Sitemap: http://myleancher.ru/Web.sitemap
+Sitemap: http://myleancher.ru/sitemap.txt
 
 User-Agent: *
 Disallow:

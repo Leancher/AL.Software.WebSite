@@ -6,7 +6,10 @@ Public Class Config
     Public Shared PictureFolder As String = "Pictures"
     Public Shared PreviewFolder As String = "Pictures/Preview"
 
+    Public Shared ListCategory() As String
+
     Public Shared TableCategory As String = "ListCategory"
+    Public Shared CategoryMain As String = "Main"
     Public Shared CategoryMyProjects As String = "MyProjects"
     Public Shared CategoryPhotoAlbums As String = "PhotoAlbums"
     Public Shared CategoryHistory As String = "History"

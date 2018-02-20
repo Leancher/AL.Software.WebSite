@@ -9,7 +9,7 @@
             Dim DecimalPlace As String = "0"
             Database.DatabaseOpen()
             CatName = Request.QueryString("category")
-            For CurrentTile = 1 To Database.GetCountRow(CatName)
+            For CurrentTile = 1 To Database.GetCountItem(CatName)
                 If CurrentTile > 9 Then DecimalPlace = ""
                 Response.Write("<div class='TileCell'>")
                 Response.Write("<a href ='./" + Config.DefaultPage + "?" + CatName + "=" + CurrentTile.ToString + "'>")

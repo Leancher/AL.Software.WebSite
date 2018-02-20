@@ -15,7 +15,7 @@ Public Class DatabaseConnect
         End Try
     End Sub
 
-    Public Function GetCountRow(NameTable As String) As Integer
+    Public Function GetCountItem(NameTable As String) As Integer
         Try
             Command = Database.CreateCommand()
             Command.CommandText = "SELECT Count (*) From " + NameTable

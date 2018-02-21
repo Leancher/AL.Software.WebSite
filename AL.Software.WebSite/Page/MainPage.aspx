@@ -10,7 +10,16 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PageHolder" Runat="Server">
     <div class="CategoryCaption">
-        <% Response.Write(Caption) %>
+        <% Response.Write(Caption)
+
+            %>
     </div>
+    <%      Dim Database As New DatabaseConnect()
+        Database.DatabaseOpen()
+        'Database.UpdateDB()
+        Response.Write(Database.RecordDB)
+        Response.Write(Database.GetCategoryProperty("MyProjects", "Name"))
+        Database.DatabaseClose()
+        %>
     <asp:PlaceHolder ID="ContentHolder" runat="server" />
 </asp:Content>

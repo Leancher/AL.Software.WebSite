@@ -1,10 +1,10 @@
 ﻿Partial Class Page_Default
     Inherits Page
     Public PageName As String = ""
-    Public Caption As String
-    Public LogoPicName As String
-    Public Description As String
-    Public ShowException As String
+    Public Caption As String = ""
+    Public LogoPicName As String = ""
+    Public Description As String = ""
+    Public ShowException As String = ""
     Dim Database As New DatabaseConnect()
     Dim DecimalPlace As String = "0"
     Dim CategoryName As String = ""
@@ -12,6 +12,9 @@
     Dim ID As String = ""
 
     Private Sub Page_Default_Load(sender As Object, e As EventArgs) Handles Me.Load
+        LoadContent()
+    End Sub
+    Private Sub LoadContent()
         Dim Content As Control
         Database.DatabaseOpen()
         Try

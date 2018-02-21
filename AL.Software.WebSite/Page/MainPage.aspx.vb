@@ -1,28 +1,30 @@
-﻿Partial Class Page_Default
+﻿Partial Public Class Page_Default
     Inherits Page
     Public PageName As String = ""
     Public Caption As String = ""
     Public LogoPicName As String = ""
     Public Description As String = ""
     Public ShowException As String = ""
-    Dim Database As New DatabaseConnect()
-    Dim DecimalPlace As String = "0"
-    Dim CategoryName As String = ""
-    Dim CategoryValue As String = ""
-    Dim ID As String = ""
-
+    Private Database As New DatabaseConnect()
+    Private DecimalPlace As String = "0"
+    Private CategoryName As String = ""
+    Private CategoryValue As String = ""
+    Private IDent As String = ""
+    Private Content As Control
     Private Sub Page_Default_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Content = Page.LoadControl("MainMenu.ascx")
+        MainMenuHolder.Controls.Add(Content)
         LoadContent()
     End Sub
     Private Sub LoadContent()
-        Dim Content As Control
+
         Database.DatabaseOpen()
         Try
             CategoryName = Request.QueryString("category")
             If CategoryName <> Nothing Then
                 Caption = Database.GetCategoryProperty(CategoryName, "Caption")
                 Description = Database.GetCategoryProperty(CategoryName, "Description")
-                ID = Database.GetCategoryProperty(CategoryName, "ID")
+                IDent = Database.GetCategoryProperty(CategoryName, "ID")
                 PageName = "Cat-" + CategoryName + ".ascx"
                 Dim IsTileGrid As String = Database.GetCategoryProperty(CategoryName, "IsTileGrid")
                 If IsTileGrid = "1" Then PageName = "ShowTileGrid.ascx"

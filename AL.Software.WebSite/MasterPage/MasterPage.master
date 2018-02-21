@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
-<%@ Register TagPrefix="Site" TagName="MainMenu" Src="~/MasterPage/MainMenu.ascx" %>
 
 <!DOCTYPE html>
 
@@ -18,14 +17,7 @@
             </div>
         </div>
         <div class="Body">
-            <div class="MainMenuLocate">
-                <div id="MainMenu">
-                    <Site:MainMenu runat="server" />
-                </div>
-            </div>
-            <div class="ContentLocate">
-                <asp:ContentPlaceHolder ID="PageHolder" runat="server"/>
-            </div>
+            <asp:ContentPlaceHolder ID="PageHolder" runat="server"/>
         </div>
     </form>
 </body>

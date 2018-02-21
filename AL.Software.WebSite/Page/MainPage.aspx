@@ -9,17 +9,22 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PageHolder" Runat="Server">
-    <div class="CategoryCaption">
-        <% Response.Write(Caption)
-
-            %>
+    <div class="MainMenuLocate">
+        <div id="MainMenu">
+            <asp:PlaceHolder ID="MainMenuHolder" runat="server" /> 
+        </div>
     </div>
-    <%      Dim Database As New DatabaseConnect()
-        Database.DatabaseOpen()
-        'Database.UpdateDB()
-        Response.Write(Database.RecordDB)
-        Response.Write(Database.GetCategoryProperty("MyProjects", "Name"))
-        Database.DatabaseClose()
+    <div class="ContentLocate">
+        <div class="CategoryCaption">
+            <% Response.Write(Caption) %>
+        </div>
+        <%      
+            Dim Database As New DatabaseConnect()
+            Database.DatabaseOpen()
+            Database.UpdateViewed()
+            Response.Write(Database.Item)
+            Database.DatabaseClose()
         %>
-    <asp:PlaceHolder ID="ContentHolder" runat="server" />
+        <asp:PlaceHolder ID="ContentHolder" runat="server" />                
+    </div> 
 </asp:Content>

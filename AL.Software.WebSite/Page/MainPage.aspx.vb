@@ -11,12 +11,24 @@
     Private ItemID As String = ""
     Private Content As Control
     Private Sub Page_Default_Load(sender As Object, e As EventArgs) Handles Me.Load
+        LoadListCategory()
         Content = Page.LoadControl("MainMenu.ascx")
         MainMenuHolder.Controls.Add(Content)
         LoadContent()
     End Sub
-    Private Sub LoadContent()
+    Private Sub LoadListCategory()
+        Dim CountItem As Integer
+        Dim NumberCategory As Integer
+        Database.DatabaseOpen()
+        CountItem = Database.GetCountItem(Config.TableCategory)
+        ReDim Config.ListCategory(CountItem - 1)
+        For NumberCategory = 1 To CountItem
+            Config.ListCategory(NumberCategory - 1) = Database.GetDatabaseItem(Config.TableCategory, NumberCategory, "Name")
+        Next NumberCategory
+        Database.DatabaseClose()
+    End Sub
 
+    Private Sub LoadContent()
         Database.DatabaseOpen()
         Try
             CategoryName = Request.QueryString("category")
@@ -65,7 +77,7 @@
     Private Sub UpdateCountView()
         Dim CountView As Integer = 0
         Dim CurrentCount As String
-        CurrentCount = Database.GetDatabaseItem(CategoryName, ItemID, "Viewed")
+        CurrentCount = Database.GetDatabaseItem(CategoryName, ItemID, "Viewed").ToString
         CountView = CInt(CurrentCount) + 1
         Database.UpdateViewValue(CategoryName, ItemID, CountView.ToString)
     End Sub

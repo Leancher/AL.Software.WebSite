@@ -16,10 +16,10 @@ Public Class DatabaseConnect
         End Try
     End Sub
 
-    Public Sub UpdateViewed(NameTable As String, ItemID As Integer)
+    Public Sub UpdateViewValue(NameTable As String, ItemID As String, Cont As String)
         Try
             Command = Database.CreateCommand()
-            Command.CommandText = "UPDATE " + Config.TableCategory + " SET Viewed='10' WHERE Name LIKE 'MyProjects'"
+            Command.CommandText = "UPDATE " + Config.TableCategory + " SET Viewed='" + Cont + "' WHERE ID=" + ItemID
             Command.ExecuteNonQuery()
             Item = "Ok"
         Catch ex As Exception
@@ -57,10 +57,10 @@ Public Class DatabaseConnect
         Return ""
     End Function
 
-    Public Function GetDatabaseItem(NameTable As String, ItemID As Integer, ItemProperty As String) As String
+    Public Function GetDatabaseItem(NameTable As String, ItemID As String, ItemProperty As String) As String
         Try
             Command = Database.CreateCommand()
-            Command.CommandText = "SELECT * FROM " + NameTable + " WHERE ID=" + ItemID.ToString
+            Command.CommandText = "SELECT * FROM " + NameTable + " WHERE ID=" + ItemID
             ReadItem = Command.ExecuteReader()
             While ReadItem.Read()
                 Item = ReadItem.Item(ItemProperty).ToString

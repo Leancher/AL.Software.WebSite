@@ -18,13 +18,6 @@
         <div class="CategoryCaption">
             <% Response.Write(Caption) %>
         </div>
-        <%      
-            Dim Database As New DatabaseConnect()
-            Database.DatabaseOpen()
-            Database.UpdateViewed()
-            Response.Write(Database.Item)
-            Database.DatabaseClose()
-        %>
         <asp:PlaceHolder ID="ContentHolder" runat="server" />                
     </div> 
 </asp:Content>

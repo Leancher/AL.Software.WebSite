@@ -9,7 +9,7 @@
     For NumberCategory = 1 To Config.ListCategory.Length
         CurrentCategory = Config.ListCategory(NumberCategory - 1)
         Response.Write("<a href ='" + WebPath + "\Page\" + Config.DefaultPage + "?category=" + CurrentCategory + "'>")
-        Response.Write(Database.GetDatabaseItem(Config.TableCategory, NumberCategory, "Caption"))
+        Response.Write(Database.GetDatabaseItem(Config.CategoryTable, NumberCategory, "Caption"))
         Response.Write("</a>")
     Next NumberCategory
     Database.DatabaseClose()

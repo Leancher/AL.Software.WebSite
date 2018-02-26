@@ -8,7 +8,7 @@ Public Class Config
 
     Public Shared ListCategory() As String
 
-    Public Shared TableCategory As String = "ListCategory"
+    Public Shared CategoryTable As String = "ListCategory"
     Public Shared CategoryMain As String = "Main"
     Public Shared CategoryMyProjects As String = "MyProjects"
     Public Shared CategoryPhotoAlbums As String = "PhotoAlbums"

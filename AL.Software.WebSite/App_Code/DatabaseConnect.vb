@@ -16,10 +16,10 @@ Public Class DatabaseConnect
         End Try
     End Sub
 
-    Public Sub UpdateViewValue(NameTable As String, ItemID As String, Cont As String)
+    Public Sub UpdateViewValue(TableName As String, ItemID As String, Count As String)
         Try
             Command = Database.CreateCommand()
-            Command.CommandText = "UPDATE " + Config.TableCategory + " SET Viewed='" + Cont + "' WHERE ID=" + ItemID
+            Command.CommandText = "UPDATE " + TableName + " SET Viewed='" + Count + "' WHERE ID=" + ItemID
             Command.ExecuteNonQuery()
             Item = "Ok"
         Catch ex As Exception
@@ -44,7 +44,7 @@ Public Class DatabaseConnect
     Public Function GetCategoryProperty(CatName As String, CatProperty As String) As String
         Try
             Command = Database.CreateCommand()
-            Command.CommandText = "SELECT * FROM " + Config.TableCategory + " WHERE Name LIKE '" + CatName + "'"
+            Command.CommandText = "SELECT * FROM " + Config.CategoryTable + " WHERE Name LIKE '" + CatName + "'"
             ReadItem = Command.ExecuteReader()
             While ReadItem.Read()
                 Item = ReadItem.Item(CatProperty).ToString

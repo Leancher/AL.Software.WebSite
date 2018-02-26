@@ -68,7 +68,7 @@
             Content = Page.LoadControl("Page404.ascx")
             ShowException = ex.ToString
         End Try
-        LogoPicName = "../" + Config.PictureFolder + "/Logo/" + CategoryName + ".png"
+        LogoPicName = "../" + Config.PicturesFolder + "/Logo/" + CategoryName + ".png"
         Description = "<meta name='description' content='" + Description + "' />"
         UpdateCountView()
         ContentHolder.Controls.Add(Content)

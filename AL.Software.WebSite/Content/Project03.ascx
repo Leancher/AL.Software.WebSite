@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Project03.ascx.vb" Inherits="Page_Sub_Project03" %>
-    <div class="ContentCaption">
-        Мобильное приложение для управления автомобилем
-    </div>
+<div class="ContentCaption">
+    Мобильное приложение для управления автомобилем
+</div>
 <br />
 Мобильное приложение для управления автомобилем. 
 Посредством нажатия кнопок на смартфоне отправляет и принимает СМС-команды модулю автозапуска автомобиля.<br />
@@ -15,5 +15,10 @@
 <br />
 Исходный код приложения на <a href="https://github.com/Leancher/AL.Software.StartingEngine.AndApp">GitHub</a>
 <br /><br />
-<img src="../Pictures/Projects/Project03Photo01.png" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<img src="../Pictures/Projects/Project03Photo02.png" />
+<%
+        Response.Write("<img src='../" + Config.ContentPhotoFolder + "/Project03-01.png' />")
+%>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<%
+        Response.Write("<img src='../" + Config.ContentPhotoFolder + "/Project03-02.png' />")
+%>

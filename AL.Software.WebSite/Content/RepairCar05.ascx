@@ -1,14 +1,10 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar05.ascx.vb" Inherits="Content_RepairCar05" %>
-<div class="ContentCaption">
-    Чистка переключателя АКПП
-</div>
-<br />
 
+<br />
 Иногда не включался стартер. После нескольких перемещений рычага АКПП, стартер начинал работать.
-<br />
 Была выявлена проблема в окислившихся контактах переключателя АКПП, 
+по каталогу запчастей он идет как выключатель механизма парковки (на схеме под цифрой 9).
 <br />
-по каталогу запчастей он идет как выключатель механизма парковки (на схема под цифрой 9).
 <br />
 <%
     Response.Write("<img src='../" + Config.ContentPhotoFolder + "/RepairCar05-01.jpg' />")
@@ -18,11 +14,13 @@
 <br />
 Далее нужно выбить шплинт, который крепит кулису переключателя. Для этого хорошо подходит винт М4.
 <br />
+<br />
 <%
     Response.Write("<img src='../" + Config.ContentPhotoFolder + "/RepairCar05-02.jpg' />")
 %>
 <br />
 Выбив шплинт, снимаем кулису и отводим в сторону. Отключаем разъем от переключателя. Выкручиваем два болта, крепящих переключатель.
+<br />
 <br />
 <%
     Response.Write("<img src='../" + Config.ContentPhotoFolder + "/RepairCar05-03.jpg' />")
@@ -32,13 +30,14 @@
 <br />
 Снимаем переключатель. Разбирать нужно осторожно, контакты внутри с пружинками и могут выскочить из корпуса. Чистим контакты, смазываем силиконовой смазкой.
 <br />
+<br />
 <%
     Response.Write("<img src='../" + Config.ContentPhotoFolder + "/RepairCar05-04.jpg' />")
 %>
 <br />
 Собираем все обратно.
 <br />
+<br />
 <%
     Response.Write("<img src='../" + Config.ContentPhotoFolder + "/RepairCar05-05.jpg' />")
 %>
-<br />

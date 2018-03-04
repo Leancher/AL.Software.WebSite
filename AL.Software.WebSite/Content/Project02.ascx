@@ -1,7 +1,5 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Project02.ascx.vb" Inherits="Page_Sub_Project02" %>
-    <div class="ContentCaption">
-        Модуль центрального замка для автомобиля
-    </div>
+
 <br />
 Универсальный центральный замок, можно поставить на любую машину и подключить к любой автосигнализации.
 <br />

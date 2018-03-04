@@ -15,9 +15,11 @@
         </div>
     </div>
     <div class="ContentLocate">
-        <div class="CategoryCaption">
+        <div class="ContentCaption">
             <% Response.Write(Caption) %>
         </div>
-        <asp:PlaceHolder ID="ContentHolder" runat="server" />                
+        <% If IsContent = True Then Response.Write("<div class='ContentColumn'>") %>        
+            <asp:PlaceHolder ID="ContentHolder" runat="server" /> 
+        <% If IsContent = 1 Then Response.Write("</div>") %>
     </div> 
 </asp:Content>

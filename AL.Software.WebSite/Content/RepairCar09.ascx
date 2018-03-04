@@ -1,7 +1,5 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar09.ascx.vb" Inherits="Content_RepairCar09" %>
-<div class="ContentCaption">
-     Переделка включения габаритов и фар
-</div>
+
 <br />
 <br />
 В переделанной схеме габариты и фары включаются при включении зажигания. 

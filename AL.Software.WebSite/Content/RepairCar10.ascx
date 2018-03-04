@@ -1,7 +1,5 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar10.ascx.vb" Inherits="Content_RepairCar10" %>
-<div class="ContentCaption">
-     Подключение кнопок стеклоподъемника на все двери
-</div>
+
 <br />
 <br />
 Подключение кнопок управления электрическими стеклоподъемниками для всех дверей, если раньше их не было, или были только в передних дверях.

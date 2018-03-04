@@ -1,7 +1,5 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar06.ascx.vb" Inherits="Content_RepairCar06" %>
-<div class="ContentCaption">
-    Детали задних тормозов
-</div>
+
 <br />
 Ремонтировал задние тормоза. Для ремонта купил наборы деталей тормозных механизмов.
 <br />

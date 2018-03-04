@@ -1,7 +1,5 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Project03.ascx.vb" Inherits="Page_Sub_Project03" %>
-<div class="ContentCaption">
-    Мобильное приложение для управления автомобилем
-</div>
+
 <br />
 Мобильное приложение для управления автомобилем. 
 Посредством нажатия кнопок на смартфоне отправляет и принимает СМС-команды модулю автозапуска автомобиля.<br />

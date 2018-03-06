@@ -15,6 +15,9 @@
                 <asp:ContentPlaceHolder ID="LogoPlaceHolder" runat ="server"/>
                 LEANCHER 
             </div>
+            <div style="margin-left:auto;margin-right:18px">
+                <asp:ContentPlaceHolder ID="Statistics" runat ="server"/>
+            </div>          
         </div>
         <div class="Body">
             <asp:ContentPlaceHolder ID="PageHolder" runat="server"/>

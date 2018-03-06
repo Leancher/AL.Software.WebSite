@@ -8,6 +8,16 @@
     <% Response.Write("<img src='" + LogoPicName + "' />") %>
 </asp:Content>
 
+<asp:Content ID="Content3" ContentPlaceHolderID ="Statistics" runat ="server" >
+    <%  
+        Dim WebPath As String
+        WebPath = Request.Url.GetLeftPart(UriPartial.Authority)
+        Response.Write("<a href ='" + WebPath + "\Page\" + Config.DefaultPage + "?category=statistics'>")
+        Response.Write("Статистика")
+        Response.Write("</a>")
+    %>
+</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="PageHolder" Runat="Server">
     <div class="MainMenuLocate">
         <div id="MainMenu">

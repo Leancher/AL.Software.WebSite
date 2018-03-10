@@ -40,7 +40,21 @@ Public Class DatabaseConnect
             Return 0
         End Try
     End Function
-
+    Public Function GetItemID(NameTable As String, ItemName As String) As String
+        Try
+            Command = Database.CreateCommand()
+            Command.CommandText = "SELECT * FROM " + Config.CategoryTable + " WHERE Name LIKE '" + ItemName + "'"
+            ReadItem = Command.ExecuteReader()
+            While ReadItem.Read()
+                Item = ReadItem.Item("ID").ToString
+                ReadItem.Close()
+                Return Item
+            End While
+        Catch ex As Exception
+            Return ex.ToString
+        End Try
+        Return ""
+    End Function
     Public Function GetCategoryProperty(CatName As String, CatProperty As String) As String
         Try
             Command = Database.CreateCommand()

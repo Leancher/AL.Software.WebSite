@@ -19,10 +19,9 @@
         LoadContent()
     End Sub
     Private Sub LoadListCategory()
-        Dim CountItem As Integer
         Dim NumberCategory As Integer
         Database.DatabaseOpen()
-        CountItem = Database.GetCountItem(Config.CategoryTable)
+        Dim CountItem As Integer = Database.GetCountItem(Config.CategoryTable)
         ReDim Config.ListCategory(CountItem - 1)
         For NumberCategory = 1 To CountItem
             Config.ListCategory(NumberCategory - 1) = Database.GetDatabaseItem(Config.CategoryTable, NumberCategory, "Name")
@@ -35,6 +34,12 @@
         Caption = ""
         IsContent = False
         CategoryName = Request.QueryString("category")
+        ItemID = Request.QueryString("ID")
+        If ItemID = "" Then
+            TableName = Config.CategoryTable
+            ItemID = Database.GetItemID(TableName, CategoryName)
+        End If
+
         If CategoryName <> Nothing Then
             TableName = Config.CategoryTable
             Caption = Database.GetCategoryProperty(CategoryName, "Caption")
@@ -48,7 +53,12 @@
             Dim index As Integer = 0
             For index = 0 To Config.ListCategory.Length - 1
                 ItemID = Request.QueryString(Config.ListCategory(index))
-                If ItemID <> Nothing Then
+                If ItemID = "0" Then
+                    TableName = Config.CategoryTable
+                    Caption = Database.GetDatabaseItem(Config.CategoryTable, index, "Caption")
+                    Description = Database.GetDatabaseItem(Config.CategoryTable, index, "Description")
+
+                Else
                     IsContent = True
                     TableName = Config.ListCategory(index)
                     CategoryName = Config.ListCategory(index)

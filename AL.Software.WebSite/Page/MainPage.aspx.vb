@@ -68,8 +68,11 @@
                 PageName = "ViewerCurrentPhoto.ascx"
             End If
         End If
+        If CategoryName = "statistics" Then
+            PageName = "Statistics.ascx"
+            Caption = "Статистика"
+        End If
         If PageName = "" Then ShowMainPage()
-
         Try
             Content = Page.LoadControl(PageName)
         Catch ex As Exception

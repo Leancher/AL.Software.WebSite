@@ -28,8 +28,13 @@
         <div class="ContentCaption">
             <% Response.Write(Caption) %>
         </div>
-        <% If IsContent = True Then Response.Write("<div class='ContentColumn'>") %>        
-            <asp:PlaceHolder ID="ContentHolder" runat="server" /> 
-        <% If IsContent = 1 Then Response.Write("</div>") %>
+        <% Response.Write(ShowError) %>
+        <asp:PlaceHolder ID="ShowCategory" runat="server" />
+
+        <div class="ContentColumn">     
+            <asp:PlaceHolder ID="ShowArticle" runat="server" /> 
+        </div>
+
+        <asp:PlaceHolder ID="ShowPhotoAlbum" runat="server" /> 
     </div> 
 </asp:Content>

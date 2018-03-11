@@ -70,8 +70,22 @@ Public Class DatabaseConnect
         End Try
         Return ""
     End Function
-
-    Public Function GetDatabaseItem(NameTable As String, ItemID As String, ItemProperty As String) As String
+    Public Function GetItemByName(NameTable As String, ItemName As String, ItemProperty As String) As String
+        Try
+            Command = Database.CreateCommand()
+            Command.CommandText = "SELECT * FROM " + NameTable + " WHERE Name LIKE '" + ItemName + "'"
+            ReadItem = Command.ExecuteReader()
+            While ReadItem.Read()
+                Item = ReadItem.Item(ItemProperty).ToString
+                ReadItem.Close()
+                Return Item
+            End While
+        Catch ex As Exception
+            Return ex.ToString
+        End Try
+        Return ""
+    End Function
+    Public Function GetItemByID(NameTable As String, ItemID As String, ItemProperty As String) As String
         Try
             Command = Database.CreateCommand()
             Command.CommandText = "SELECT * FROM " + NameTable + " WHERE ID=" + ItemID

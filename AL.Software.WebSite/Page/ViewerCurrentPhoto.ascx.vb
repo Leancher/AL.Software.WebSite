@@ -4,7 +4,7 @@ Partial Class Page_ViewerCurrentPhoto
     Public Photo As String
     Public Album As String
     Private Sub Page_ViewerCurrentPhoto_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Album = Request.QueryString("AlbumName")
-        Photo = Request.QueryString("ShowPhoto")
+        Album = Request.QueryString("ID")
+        Photo = Request.QueryString("Photo")
     End Sub
 End Class

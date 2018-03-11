@@ -1,5 +1,5 @@
 ﻿
-Partial Class Page_Page404
+Partial Class Page_Empty
     Inherits System.Web.UI.UserControl
 
 End Class

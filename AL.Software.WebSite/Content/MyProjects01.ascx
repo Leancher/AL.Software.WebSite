@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Project01.ascx.vb" Inherits="Page_Sub_Project01" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="MyProjects01.ascx.vb" Inherits="Page_Sub_Project01" %>
 <br />
 Модуль автозапуска двигателя. Запуск и остановка двигателя с помощью СМС-команд или кнопкой в салоне.<br />
 Версия 2 состоит из двух плат: силовая часть и GSM. Модуль имеет недостаток - большой потребляемый ток в режиме ожидания приема команд, 

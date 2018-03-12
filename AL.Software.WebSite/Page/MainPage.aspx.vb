@@ -4,20 +4,28 @@
     Public Caption As String = ""
     Public LogoPicName As String = ""
     Public Description As String = ""
-    Public ShowException As String = ""
     Public ShowError As String = ""
     Private Database As New DatabaseConnect()
     Private DecimalPlace As String = "0"
     Private CategoryName As String = ""
     Private TableName As String = ""
-    Private ItemID As String = ""
     Shadows ID As String = ""
 
     Private Sub Page_Default_Load(sender As Object, e As EventArgs) Handles Me.Load
+        CategoryName = Request.QueryString("category")
+        ID = Request.QueryString("ID")
         LoadListCategory()
-        Dim LoadMenu = Page.LoadControl("MainMenu.ascx")
-        MainMenuHolder.Controls.Add(LoadMenu)
+        MainMenuHolder.Controls.Add(Page.LoadControl("MainMenu.ascx"))
+        If CategoryName = Nothing Then CategoryName = Config.CategoryMain
+        If CategoryName = "statistics" Then
+            ShowStatistics()
+            Exit Sub
+        End If
         LoadContent()
+    End Sub
+    Private Sub ShowStatistics()
+        Caption = "Статистика"
+        ShowCategory.Controls.Add(Page.LoadControl("Statistics.ascx"))
     End Sub
     Private Sub LoadListCategory()
         Dim NumberCategory As Integer
@@ -33,14 +41,8 @@
     Private Sub LoadContent()
         Database.DatabaseOpen()
         Caption = ""
-        CategoryName = Request.QueryString("category")
-        ID = Request.QueryString("ID")
-        If CategoryName = Nothing Then
-            CategoryName = Config.CategoryMain
-            ID = "0"
-        End If
         Try
-            If ID <> "0" And ID <> Nothing Then
+            If CInt(ID) > 0 Then
                 TableName = CategoryName
                 If CInt(ID) > 9 Then DecimalPlace = ""
                 PageName = "../Content/" + CategoryName + DecimalPlace + ID + ".ascx"
@@ -58,12 +60,13 @@
                     ShowPhotoAlbum.Controls.Add(LoadPhotoAlbum)
                 End If
             End If
-            If ID = "0" Then
+            If ID = "0" Or ID = Nothing Then
                 TableName = Config.CategoryTable
                 ID = Database.GetItemID(TableName, CategoryName)
                 PageName = CategoryName + ".ascx"
-                Dim IsTileGrid As String = Database.GetItemByID(TableName, ID, "IsTileGrid")
+                Dim IsTileGrid As String = Database.GetItemByName(Config.CategoryTable, CategoryName, "IsTileGrid")
                 If IsTileGrid = "1" Then PageName = "CategoryTileGrid.ascx"
+
                 Dim LoadCategory = Page.LoadControl(PageName)
                 ShowCategory.Controls.Add(LoadCategory)
             End If
@@ -137,16 +140,7 @@
     End Sub
     Private Sub UpdateCountView()
         Dim CountView As Integer = 0
-        CountView = CInt(Database.GetItemByID(TableName, ItemID, "Viewed")) + 1
-        Database.UpdateViewValue(TableName, ItemID, CountView.ToString)
-    End Sub
-    Private Sub ShowMainPage()
-        CategoryName = Config.CategoryMain
-        TableName = Config.CategoryTable
-        Caption = Database.GetCategoryProperty(CategoryName, "Caption")
-        Description = Database.GetCategoryProperty(CategoryName, "Description")
-        ItemID = Database.GetCategoryProperty(CategoryName, "ID")
-        PageName = "Cat-" + CategoryName + ".ascx"
-        UpdateCountView()
+        CountView = CInt(Database.GetItemByID(TableName, ID, "Viewed")) + 1
+        Database.UpdateViewValue(TableName, ID, CountView.ToString)
     End Sub
 End Class

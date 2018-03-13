@@ -29,12 +29,12 @@
             <% Response.Write(Caption) %>
         </div>
         <% Response.Write(ShowError) %>
-        <asp:PlaceHolder ID="ShowCategory" runat="server" />
+        <asp:PlaceHolder ID="CategoryPlaceHolder" runat="server" />
 
         <div class="ContentColumn">     
-            <asp:PlaceHolder ID="ShowArticle" runat="server" /> 
+            <asp:PlaceHolder ID="ArticlePlaceHolder" runat="server" /> 
         </div>
 
-        <asp:PlaceHolder ID="ShowPhotoAlbum" runat="server" /> 
+        <asp:PlaceHolder ID="PhotoPlaceHolder" runat="server" /> 
     </div> 
 </asp:Content>

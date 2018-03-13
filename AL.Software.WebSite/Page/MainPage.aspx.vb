@@ -1,31 +1,74 @@
 ﻿Partial Public Class Page_Default
     Inherits Page
-    Public PageName As String = ""
+    Public CategoryModule As String = ""
+    Public ArticleModule As String = ""
+    Public PhotoModule As String = ""
     Public Caption As String = ""
     Public LogoPicName As String = ""
     Public Description As String = ""
     Public ShowError As String = ""
     Private Database As New DatabaseConnect()
-    Private DecimalPlace As String = "0"
     Private CategoryName As String = ""
-    Private TableName As String = ""
     Shadows ID As String = ""
+    Dim TableName As String = ""
 
     Private Sub Page_Default_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Database.DatabaseOpen()
         CategoryName = Request.QueryString("category")
         ID = Request.QueryString("ID")
         LoadListCategory()
         MainMenuHolder.Controls.Add(Page.LoadControl("MainMenu.ascx"))
+        If ID = "0" Then CategoryName = Config.CategoryMain
         If CategoryName = Nothing Then CategoryName = Config.CategoryMain
+        If CInt(ID) > 0 Then ShowArticle()
+        If ID = Nothing Then ShowCategory()
+        CheckModule()
+        Try
+            PhotoPlaceHolder.Controls.Add(Page.LoadControl(PhotoModule))
+            ArticlePlaceHolder.Controls.Add(Page.LoadControl(ArticleModule))
+            CategoryPlaceHolder.Controls.Add(Page.LoadControl(CategoryModule))
+        Catch ex As Exception
+            ShowError = "Такой страницы не существует"
+        End Try
+        UpdateCountView()
+        LogoPicName = "../" + Config.PicturesFolder + "/Logo/" + CategoryName + ".png"
+        Description = "<meta name='description' content='" + Description + "' />"
+        Database.DatabaseClose()
+    End Sub
+    Private Sub CheckModule()
+        If CategoryModule = Nothing Then CategoryModule = "Empty.ascx"
+        If ArticleModule = Nothing Then ArticleModule = "Empty.ascx"
+        If PhotoModule = Nothing Then PhotoModule = "Empty.ascx"
+    End Sub
+    Private Sub ShowCategory()
         If CategoryName = "statistics" Then
-            ShowStatistics()
+            Caption = "Статистика"
+            CategoryModule = "Statistics.ascx"
             Exit Sub
         End If
-        LoadContent()
+        CategoryModule = CategoryName + ".ascx"
+        TableName = Config.CategoryTable
+        Dim IsTileGrid As String = Database.GetItemByName(TableName, CategoryName, "IsTileGrid")
+        If IsTileGrid = "1" Then CategoryModule = "CategoryTileGrid.ascx"
+        ID = Database.GetItemByName(TableName, CategoryName, "ID")
+        Caption = Database.GetItemByName(TableName, CategoryName, "Caption")
+        Description = Database.GetItemByName(TableName, CategoryName, "Description")
     End Sub
-    Private Sub ShowStatistics()
-        Caption = "Статистика"
-        ShowCategory.Controls.Add(Page.LoadControl("Statistics.ascx"))
+    Private Sub ShowArticle()
+        Dim DecimalPlace As String = "0"
+        TableName = CategoryName
+        If CInt(ID) > 9 Then DecimalPlace = ""
+        ArticleModule = "../Content/" + CategoryName + DecimalPlace + ID + ".ascx"
+        Dim IsPhotoAlbum As String = Database.GetItemByName(Config.CategoryTable, CategoryName, "IsPhotoAlbum")
+        If IsPhotoAlbum = "1" Then PhotoModule = "ViewerPhotoAlbum.ascx"
+        If Request.QueryString("Photo") <> Nothing Then PhotoModule = "ViewerCurrentPhoto.ascx"
+        Caption = Database.GetItemByID(TableName, ID, "Caption")
+        Description = Database.GetItemByID(TableName, ID, "Description")
+    End Sub
+    Private Sub UpdateCountView()
+        Dim CountView As Integer = 0
+        CountView = CInt(Database.GetItemByID(TableName, ID, "Viewed")) + 1
+        Database.UpdateViewValue(TableName, ID, CountView.ToString)
     End Sub
     Private Sub LoadListCategory()
         Dim NumberCategory As Integer
@@ -37,7 +80,6 @@
         Next NumberCategory
         Database.DatabaseClose()
     End Sub
-
     Private Sub LoadContent()
         Database.DatabaseOpen()
         Caption = ""
@@ -45,10 +87,10 @@
             If CInt(ID) > 0 Then
                 TableName = CategoryName
                 If CInt(ID) > 9 Then DecimalPlace = ""
-                PageName = "../Content/" + CategoryName + DecimalPlace + ID + ".ascx"
+                ArticleModule = "../Content/" + CategoryName + DecimalPlace + ID + ".ascx"
                 Dim LoadArticle As Control
                 Try
-                    LoadArticle = Page.LoadControl(PageName)
+                    LoadArticle = Page.LoadControl(CategoryModule)
                 Catch ex As Exception
                     LoadArticle = Page.LoadControl("Empty.ascx")
                 End Try
@@ -63,17 +105,17 @@
             If ID = "0" Or ID = Nothing Then
                 TableName = Config.CategoryTable
                 ID = Database.GetItemID(TableName, CategoryName)
-                PageName = CategoryName + ".ascx"
+                CategoryModule = CategoryName + ".ascx"
                 Dim IsTileGrid As String = Database.GetItemByName(Config.CategoryTable, CategoryName, "IsTileGrid")
-                If IsTileGrid = "1" Then PageName = "CategoryTileGrid.ascx"
+                If IsTileGrid = "1" Then CategoryModule = "CategoryTileGrid.ascx"
 
-                Dim LoadCategory = Page.LoadControl(PageName)
-                ShowCategory.Controls.Add(LoadCategory)
+                Dim LoadCategory = Page.LoadControl(CategoryModule)
+                CategoryPlaceHolder.Controls.Add(LoadCategory)
             End If
             Caption = Database.GetItemByID(TableName, ID, "Caption")
-            LogoPicName = "../" + Config.PicturesFolder + "/Logo/" + CategoryName + ".png"
+
             Description = Database.GetItemByID(TableName, ID, "Description")
-            Description = "<meta name='description' content='" + Description + "' />"
+
         Catch ex As Exception
             ShowError = "Такой страницы не существует"
         End Try
@@ -138,9 +180,5 @@
         'ContentHolder.Controls.Add(Content)
         'Database.DatabaseClose()
     End Sub
-    Private Sub UpdateCountView()
-        Dim CountView As Integer = 0
-        CountView = CInt(Database.GetItemByID(TableName, ID, "Viewed")) + 1
-        Database.UpdateViewValue(TableName, ID, CountView.ToString)
-    End Sub
+
 End Class

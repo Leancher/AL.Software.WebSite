@@ -10,7 +10,7 @@
     Private Database As New DatabaseConnect()
     Private CategoryName As String = ""
     Shadows ID As String = ""
-    Dim TableName As String = ""
+    Private TableName As String = ""
 
     Private Sub Page_Default_Load(sender As Object, e As EventArgs) Handles Me.Load
         Database.DatabaseOpen()
@@ -66,60 +66,59 @@
         Description = Database.GetItemByID(TableName, ID, "Description")
     End Sub
     Private Sub UpdateCountView()
+        If CategoryName = "statistics" Then Exit Sub
         Dim CountView As Integer = 0
         CountView = CInt(Database.GetItemByID(TableName, ID, "Viewed")) + 1
         Database.UpdateViewValue(TableName, ID, CountView.ToString)
     End Sub
     Private Sub LoadListCategory()
         Dim NumberCategory As Integer
-        Database.DatabaseOpen()
         Dim CountItem As Integer = Database.GetCountItem(Config.CategoryTable)
         ReDim Config.ListCategory(CountItem - 1)
         For NumberCategory = 1 To CountItem
             Config.ListCategory(NumberCategory - 1) = Database.GetItemByID(Config.CategoryTable, NumberCategory, "Name")
         Next NumberCategory
-        Database.DatabaseClose()
     End Sub
     Private Sub LoadContent()
-        Database.DatabaseOpen()
-        Caption = ""
-        Try
-            If CInt(ID) > 0 Then
-                TableName = CategoryName
-                If CInt(ID) > 9 Then DecimalPlace = ""
-                ArticleModule = "../Content/" + CategoryName + DecimalPlace + ID + ".ascx"
-                Dim LoadArticle As Control
-                Try
-                    LoadArticle = Page.LoadControl(CategoryModule)
-                Catch ex As Exception
-                    LoadArticle = Page.LoadControl("Empty.ascx")
-                End Try
-                ShowArticle.Controls.Add(LoadArticle)
-                Dim IsPhotoAlbum As String = Database.GetItemByName(Config.CategoryTable, CategoryName, "IsPhotoAlbum")
-                If IsPhotoAlbum = "1" Then
-                    Dim LoadPhotoAlbum = Page.LoadControl("ViewerPhotoAlbum.ascx")
-                    If Request.QueryString("Photo") <> Nothing Then LoadPhotoAlbum = Page.LoadControl("ViewerCurrentPhoto.ascx")
-                    ShowPhotoAlbum.Controls.Add(LoadPhotoAlbum)
-                End If
-            End If
-            If ID = "0" Or ID = Nothing Then
-                TableName = Config.CategoryTable
-                ID = Database.GetItemID(TableName, CategoryName)
-                CategoryModule = CategoryName + ".ascx"
-                Dim IsTileGrid As String = Database.GetItemByName(Config.CategoryTable, CategoryName, "IsTileGrid")
-                If IsTileGrid = "1" Then CategoryModule = "CategoryTileGrid.ascx"
+        'Database.DatabaseOpen()
+        'Caption = ""
+        'Try
+        '    If CInt(ID) > 0 Then
+        '        TableName = CategoryName
+        '        If CInt(ID) > 9 Then DecimalPlace = ""
+        '        ArticleModule = "../Content/" + CategoryName + DecimalPlace + ID + ".ascx"
+        '        Dim LoadArticle As Control
+        '        Try
+        '            LoadArticle = Page.LoadControl(CategoryModule)
+        '        Catch ex As Exception
+        '            LoadArticle = Page.LoadControl("Empty.ascx")
+        '        End Try
+        '        ShowArticle.Controls.Add(LoadArticle)
+        '        Dim IsPhotoAlbum As String = Database.GetItemByName(Config.CategoryTable, CategoryName, "IsPhotoAlbum")
+        '        If IsPhotoAlbum = "1" Then
+        '            Dim LoadPhotoAlbum = Page.LoadControl("ViewerPhotoAlbum.ascx")
+        '            If Request.QueryString("Photo") <> Nothing Then LoadPhotoAlbum = Page.LoadControl("ViewerCurrentPhoto.ascx")
+        '            ShowPhotoAlbum.Controls.Add(LoadPhotoAlbum)
+        '        End If
+        '    End If
+        '    If ID = "0" Or ID = Nothing Then
+        '        TableName = Config.CategoryTable
+        '        ID = Database.GetItemID(TableName, CategoryName)
+        '        CategoryModule = CategoryName + ".ascx"
+        '        Dim IsTileGrid As String = Database.GetItemByName(Config.CategoryTable, CategoryName, "IsTileGrid")
+        '        If IsTileGrid = "1" Then CategoryModule = "CategoryTileGrid.ascx"
 
-                Dim LoadCategory = Page.LoadControl(CategoryModule)
-                CategoryPlaceHolder.Controls.Add(LoadCategory)
-            End If
-            Caption = Database.GetItemByID(TableName, ID, "Caption")
+        '        Dim LoadCategory = Page.LoadControl(CategoryModule)
+        '        CategoryPlaceHolder.Controls.Add(LoadCategory)
+        '    End If
+        '    Caption = Database.GetItemByID(TableName, ID, "Caption")
 
-            Description = Database.GetItemByID(TableName, ID, "Description")
+        '    Description = Database.GetItemByID(TableName, ID, "Description")
 
-        Catch ex As Exception
-            ShowError = "Такой страницы не существует"
-        End Try
-        Database.DatabaseClose()
+        'Catch ex As Exception
+        '    ShowError = "Такой страницы не существует"
+        'End Try
+        'Database.DatabaseClose()
 
         'If CategoryName <> Nothing Then
         '    TableName = Config.CategoryTable

@@ -4,10 +4,10 @@
         For Each CurrentPhoto In ListPhoto
             Response.Write("<div class='PhotoCell'>")
 
-            Response.Write("<a href ='./" + Config.DefaultPage + "?category=" + Config.CategoryPhotoAlbums + "&ID=" + NumberAlbum + "&Photo=" + CurrentPhoto + "'>")
+            Response.Write("<a href ='./" + Config.DefaultPage + "?category=" + CategoryAlbum + "&ID=" + NumberAlbum + "&Photo=" + CurrentPhoto + "'>")
 
             Response.Write("<div>")
-            Response.Write("<img src='../Pictures/Photo/album0" + NumberAlbum + "Preview/" + CurrentPhoto + "' />")
+            Response.Write("<img src='../Pictures/" + CategoryAlbum + "/album0" + NumberAlbum + "Preview/" + CurrentPhoto + "' />")
             Response.Write("</div>")
 
             Response.Write("</a>")

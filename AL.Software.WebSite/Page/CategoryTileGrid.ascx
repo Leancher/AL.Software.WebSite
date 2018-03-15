@@ -13,7 +13,7 @@
             If CurrentTile > 9 Then DecimalPlace = ""
             Response.Write("<div class='TileCell'>")
             Response.Write("<a href ='./" + Config.DefaultPage + "?category=" + CatName + "&ID=" + CurrentTile.ToString + "'>")
-            Response.Write("<div>")
+            Response.Write("<div class='TileCellPic'>")
             'Получаем полный путь для проверки наличия файла
             PhotoPath = Config.AppPath + "Pictures\Preview\" + CatName + DecimalPlace + CurrentTile.ToString + ".jpg"
             Dim FileInfo As New System.IO.FileInfo(PhotoPath)
@@ -22,6 +22,8 @@
             'Если файл существует, то делаем относительный путь к файлу, полный путь не загружает картинки
             If FileInfo.Exists = True Then PhotoPath = "../Pictures/Preview/" + CatName + DecimalPlace + CurrentTile.ToString + ".jpg"
             Response.Write("<img src=" + PhotoPath + " />")
+            Response.Write("</div>")
+            Response.Write("<div class='TileCellCaption'>")
             Caption = Database.GetItemByID(CatName, CurrentTile, "Caption")
             'Если название длинное и выводится в две строки, то все сдвигается вверх. Добавляем несколько пробелов для коротких строк для приведения к одному виду
             If Len(Caption) < 40 Then Caption = Caption + "</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"

@@ -1,7 +1,7 @@
 ﻿:root {
     --MyYellow: #F2D13E;
     --MyDarkGrey: #3E454C;
-    --MyBrightGrey: #F6F6F6;
+    --MyLightGrey: #F6F6F6;
     --GlobalMarginLeft: 2%;
     --GlobalWidth: 94%;
     --GlobalFont: Calibri;
@@ -52,7 +52,7 @@
     font-family: var(--GlobalFont);
     font-weight: bold;
     font-size: 36px;
-    background-color: var(--MyBrightGrey);
+    background-color: var(--MyLightGrey);
     width:100%;
 }
 
@@ -88,6 +88,15 @@
     .TileCell a:hover {
         color: var(--MyYellow);
     }
+
+.TileCellPic {
+    background-color: var(--MyLightGrey);
+    height: 269px;
+}
+
+.TileCellCaption{
+    height:36px;
+}
 
 .PhotoGrid {
     display: block;
@@ -125,7 +134,7 @@ div#MainMenu a {
 
     text-decoration: none;
     font: bold 1.1em var(--GlobalFont);
-    background-color: var(--MyBrightGrey);
+    background-color: var(--MyLightGrey);
     color: Black;
 }
 

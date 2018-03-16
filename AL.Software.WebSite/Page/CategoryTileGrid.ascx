@@ -21,7 +21,8 @@
             PhotoPath = "../" + Config.PicturesFolder + "/Noimage.jpg"
             'Если файл существует, то делаем относительный путь к файлу, полный путь не загружает картинки
             If FileInfo.Exists = True Then PhotoPath = "../Pictures/Preview/" + CatName + DecimalPlace + CurrentTile.ToString + ".jpg"
-            Response.Write("<img src=" + PhotoPath + " />")
+            Response.Write("<img src=" + PhotoPath + ">")
+
             Response.Write("</div>")
             Response.Write("<div class='TileCellCaption'>")
             Caption = Database.GetItemByID(CatName, CurrentTile, "Caption")

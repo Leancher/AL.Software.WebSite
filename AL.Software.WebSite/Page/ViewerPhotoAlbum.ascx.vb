@@ -13,7 +13,6 @@ Partial Class Page_ViewerPhotoAlbum
             ListPhoto = IO.Directory.GetFiles(Path)
             'Удаление полного пути к рисункам, рисунок с полным путем не загружается
             For Each CurrentPhoto In ListPhoto
-                Dim FileInfo As New System.IO.FileInfo(Path)
                 ListPhoto(Index) = IO.Path.GetFileName(CurrentPhoto)
                 Index = Index + 1
             Next

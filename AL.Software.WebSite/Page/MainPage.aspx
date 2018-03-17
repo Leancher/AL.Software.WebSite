@@ -1,9 +1,5 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/MasterPage/MasterPage.master" AutoEventWireup="false" CodeFile="MainPage.aspx.vb" Inherits="Page_Default" %>
 
-<asp:Content id="Content4" ContentPlaceHolderID ="SiteTitle" runat="server">
-    <% Response.Write(Title + " - " + Config.SiteTitle) %>
-</asp:Content>
-
 <asp:Content id="Content0" ContentPlaceHolderID ="MetaDescription" runat="server">
     <% Response.Write(Description) %>
 </asp:Content>
@@ -32,14 +28,13 @@
         <div class="ContentCaption">
             <% Response.Write(Caption) %>
         </div>
-        
+        <% Response.Write(ShowError) %>
         <asp:PlaceHolder ID="CategoryPlaceHolder" runat="server" />
 
         <div class="ContentColumn">     
             <asp:PlaceHolder ID="ArticlePlaceHolder" runat="server" /> 
         </div>
 
-        <asp:PlaceHolder ID="PhotoPlaceHolder" runat="server" />
-        <% Response.Write(Config.ShowError) %>
+        <asp:PlaceHolder ID="PhotoPlaceHolder" runat="server" /> 
     </div> 
 </asp:Content>

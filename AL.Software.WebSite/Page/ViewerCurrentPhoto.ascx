@@ -2,6 +2,6 @@
 <%
     Dim DecimalPlace As String = "0"
     If CInt(Album) > 9 Then DecimalPlace = ""
-    Dim PathPhoto As String = "<img class='CurrentPhoto' src='../Pictures/" + Request.QueryString("category") + "/Album" + DecimalPlace + Album + "/" + Photo + "' />"
+    Dim PathPhoto As String = "<img class='CurrentPhoto' src='../Pictures/Photo/Album" + DecimalPlace + Album + "/" + Photo + "' />"
     Response.Write(PathPhoto)
 %>

@@ -16,9 +16,8 @@
                 Response.Write("</div>")
             Next
         Catch ex As Exception
-            If IsNothing(ListPhoto) = True Then Config.ShowError = "Такого альбома не существует"
-            Exit Sub
         End Try
+        If IsNothing(ListPhoto) = True Then Config.ShowError = "Такого альбома не существует"
         If ListPhoto.Length = 0 Then Config.ShowError = "В этом альбоме нет фотографий"
     %>
 </div> 

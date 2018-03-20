@@ -2,10 +2,13 @@
 <%
     Dim NumberCategory As Integer
     Dim Database As New DatabaseConnect()
-    Dim WebPath As String = Request.Url.GetLeftPart(UriPartial.Authority)
+    'Dim WebPath As String = Request.Url.GetLeftPart(UriPartial.Authority)
+    Dim Category As String = ""
     Database.DatabaseOpen()
-    For NumberCategory = 1 To Config.ListCategory.Length
-        Response.Write("<a href ='" + WebPath + "\Page\" + Config.DefaultPage + "?category=" + Config.ListCategory(NumberCategory - 1) + "'>")
+    Dim CountItem As Integer = Database.GetCountItem(Config.CategoryTable)
+    For NumberCategory = 1 To CountItem
+        Category = Database.GetItemByID(Config.CategoryTable, NumberCategory, "Name")
+        Response.Write("<a href ='" + Config.WebPath + "\Page\" + Config.DefaultPage + "?category=" + Category + "'>")
         Response.Write(Database.GetItemByID(Config.CategoryTable, NumberCategory, "Caption"))
         Response.Write("</a>")
     Next NumberCategory

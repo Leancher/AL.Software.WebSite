@@ -4,7 +4,9 @@
 
 <html>
 <head runat="server">
-    <title>Leancher web site</title>
+    <title>
+        <asp:ContentPlaceHolder ID="SiteTitle" runat ="server" />
+    </title>
     <asp:ContentPlaceHolder ID="MetaDescription" runat ="server" />
     <link rel="stylesheet" href="../Style.css" />
 </head>

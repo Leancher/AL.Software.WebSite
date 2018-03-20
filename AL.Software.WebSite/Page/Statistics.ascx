@@ -10,21 +10,13 @@
     Database.DatabaseOpen()
     CountCategory = Database.GetCountItem(Config.CategoryTable)
     For NumberCategory = 1 To CountCategory
-        CountView = Database.GetItemByID(Config.CategoryTable, NumberCategory, "Viewed")
-        If CountView <> "0" Then
-            Caption = Database.GetItemByID(Config.CategoryTable, NumberCategory, "Caption")
-            StatStr = Caption + " - " + CountView
-            Response.Write(StatStr)
-            Response.Write("</br>")
-        End If
-    Next NumberCategory
-    For NumberCategory = 1 To CountCategory
-        CountItemCategory = Database.GetCountItem(Config.ListCategory(NumberCategory - 1))
+        Dim CategoryName = Database.GetItemByID(Config.CategoryTable, NumberCategory, "Name")
+        CountItemCategory = Database.GetCountItem(CategoryName)
         Dim NumberItem As Integer
         For NumberItem = 1 To CountItemCategory
-            CountView = Database.GetItemByID(Config.ListCategory(NumberCategory - 1), NumberItem, "Viewed")
+            CountView = Database.GetItemByID(CategoryName, NumberItem, "Viewed")
             If CountView <> "0" Then
-                Caption = Database.GetItemByID(Config.ListCategory(NumberCategory - 1), NumberItem, "Caption")
+                Caption = Database.GetItemByID(CategoryName, NumberItem, "Caption")
                 StatStr = Caption + " - " + CountView
                 Response.Write(StatStr)
                 Response.Write("</br>")

@@ -67,16 +67,13 @@
     margin-top:36px;
 }
 
-.TileCell {
-    text-align: center;
+.TileCell {    
     width: 302px;
     display: inline-block;
     margin-left: 18px;
     margin-right: 18px;
     margin-top: 18px;
-    margin-bottom: 18px;
-    padding-bottom:9px;
-    background-color: var(--MyDarkGrey);
+    margin-bottom: 18px;  
 }
 
     .TileCell a {
@@ -91,11 +88,18 @@
 
 .TileCellPic {
     background-color: var(--MyLightGrey);
-    height: 269px;
+    line-height: 269px;
 }
+    .TileCellPic img {
+        vertical-align: middle;
+    }
 
-.TileCellCaption{
-    height:36px;
+.TileCellCaption {
+    text-align: center;
+    line-height: 18px;
+    background-color: var(--MyDarkGrey);
+    padding-top:3px;
+    padding-bottom:9px;
 }
 
 .PhotoGrid {
@@ -130,8 +134,6 @@ div#MainMenu a {
     display: flex;
     align-items: center;
     padding-left:18px;
-    
-
     text-decoration: none;
     font: bold 1.1em var(--GlobalFont);
     background-color: var(--MyLightGrey);

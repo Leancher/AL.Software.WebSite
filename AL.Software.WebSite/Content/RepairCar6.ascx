@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar06.ascx.vb" Inherits="Content_RepairCar06" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar6.ascx.vb" Inherits="Content_RepairCar06" %>
 
 <br />
 Ремонтировал задние тормоза. Для ремонта купил наборы деталей тормозных механизмов.

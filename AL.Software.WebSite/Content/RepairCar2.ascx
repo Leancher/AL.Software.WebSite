@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar02.ascx.vb" Inherits="Content_RepairCar02" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar2.ascx.vb" Inherits="Content_RepairCar02" %>
 <div class="ContentColumn">
     <br />
     Буксировочная петля не вкручивается в отверстие в заднем бампере. Заходит на один виток и срывается. 

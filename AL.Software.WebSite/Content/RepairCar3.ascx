@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar03.ascx.vb" Inherits="Content_RepairCar03" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar3.ascx.vb" Inherits="Content_RepairCar03" %>
 
 <br />
 Заделал все дырки в дверях на Матизе. Была типичная ржавчина по низу дверей, в трех местах даже сгнило до дыр. 

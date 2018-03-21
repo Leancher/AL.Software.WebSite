@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="MyProjects03.ascx.vb" Inherits="Page_Sub_Project03" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="MyProjects3.ascx.vb" Inherits="Page_Sub_Project03" %>
 
 <br />
 Мобильное приложение для управления автомобилем. 

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar08.ascx.vb" Inherits="Content_RepairCar08" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar8.ascx.vb" Inherits="Content_RepairCar08" %>
 
 <br />
 Перестал работать штатный актуатор в задней двери, видимо сгорел. 

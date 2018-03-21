@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar07.ascx.vb" Inherits="Content_RepairCar07" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar7.ascx.vb" Inherits="Content_RepairCar07" %>
 
 <br />
 В прошлый год ремонтировал низ дверей. Вырезал ржавчину и заваривал отверстия. 

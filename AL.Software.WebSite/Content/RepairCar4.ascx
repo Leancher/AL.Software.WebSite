@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar04.ascx.vb" Inherits="Content_RepairCar04" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar4.ascx.vb" Inherits="Content_RepairCar04" %>
 <br />
 Подарили диагностический кабель
 <br />

@@ -1,6 +1,4 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="_Default" %>
 <%
-    Dim Link As String
-    Link = Request.Url.GetLeftPart(UriPartial.Authority) + "\Page\" + Config.DefaultPage + "?category=Main"
-    Response.Redirect(Link)
+    Response.Redirect(Config.DefaultPage + "?category=Main")
 %>

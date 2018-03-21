@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar05.ascx.vb" Inherits="Content_RepairCar05" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="RepairCar5.ascx.vb" Inherits="Content_RepairCar05" %>
 
 <br />
 Иногда не включался стартер. После нескольких перемещений рычага АКПП, стартер начинал работать.

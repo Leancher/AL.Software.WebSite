@@ -13,7 +13,7 @@
         Response.Write(NotesPreview(index))
         If NotesPreview(index) <> Nothing Then
             Response.Write("</br>")
-            Response.Write("<a href ='" + Config.WebPath + "\Page\" + Config.DefaultPage + "?category=MyNotes&Note=" + (index + 1).ToString + "'>")
+            Response.Write("<a href ='" + Config.DefaultPage + "?category=MyNotes&Note=" + (index + 1).ToString + "'>")
             Response.Write("Читать дальше")
             Response.Write("</a>")
         End If

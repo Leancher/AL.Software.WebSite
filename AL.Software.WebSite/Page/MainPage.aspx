@@ -14,9 +14,7 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID ="Statistics" runat ="server" >
     <%  
-        'Dim WebPath As String
-        'WebPath = Request.Url.GetLeftPart(UriPartial.Authority)
-        Response.Write("<a href ='" + Config.WebPath + "\Page\" + Config.DefaultPage + "?category=statistics'>Статистика</a>")
+        Response.Write("<a href ='" + Config.DefaultPage + "?category=statistics'>Статистика</a>")
     %>
 </asp:Content>
 

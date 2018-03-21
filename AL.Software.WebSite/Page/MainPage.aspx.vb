@@ -58,10 +58,8 @@
         Description = Database.GetItemByName(TableName, CategoryName, "Description")
     End Sub
     Private Sub ShowArticle()
-        Dim DecimalPlace As String = "0"
         TableName = CategoryName
-        If CInt(ID) > 9 Then DecimalPlace = ""
-        ArticleModule = "../Content/" + CategoryName + DecimalPlace + ID + ".ascx"
+        ArticleModule = "../Content/" + CategoryName + ID + ".ascx"
         Dim IsPhotoAlbum As String = Database.GetItemByName(Config.CategoryTable, CategoryName, "IsPhotoAlbum")
         If IsPhotoAlbum = "1" Then PhotoModule = "ViewerPhotoAlbum.ascx"
         If Request.QueryString("Photo") <> Nothing Then PhotoModule = "ViewerCurrentPhoto.ascx"
@@ -70,6 +68,10 @@
     End Sub
     Private Sub UpdateCountView()
         If CategoryName = "statistics" Then Exit Sub
+        If Request.QueryString("Note") <> Nothing Then
+            ID = Request.QueryString("Note")
+            TableName = "MyNotes"
+        End If
         Dim CountView As Integer = 0
         CountView = CInt(Database.GetItemByID(TableName, ID, "Viewed")) + 1
         Database.UpdateViewValue(TableName, ID, CountView.ToString)

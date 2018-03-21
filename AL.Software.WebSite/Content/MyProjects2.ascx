@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="MyProjects02.ascx.vb" Inherits="Page_Sub_Project02" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="MyProjects2.ascx.vb" Inherits="Page_Sub_Project02" %>
 
 <br />
 Универсальный центральный замок, можно поставить на любую машину и подключить к любой автосигнализации.

@@ -54,6 +54,7 @@
     font-size: 36px;
     background-color: var(--MyLightGrey);
     width:100%;
+    height:54px;
 }
 
 .ContentColumn {
@@ -133,7 +134,7 @@ div#MainMenu a {
     height: 54px;
     display: flex;
     align-items: center;
-    padding-left:18px;
+    padding-left: 18px;
     text-decoration: none;
     font: bold 1.1em var(--GlobalFont);
     background-color: var(--MyLightGrey);

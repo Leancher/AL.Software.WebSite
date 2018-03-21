@@ -5,3 +5,6 @@
     Dim PathPhoto As String = "<img class='CurrentPhoto' src='../Pictures/" + Request.QueryString("category") + "/Album" + DecimalPlace + Album + "/" + Photo + "' />"
     Response.Write(PathPhoto)
 %>
+<%--<div>
+    <img class="CurrentPhoto" src ="../Pictures/MyPhoto/Album01/photo01.JPG" />
+</div>--%>

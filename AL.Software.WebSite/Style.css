@@ -126,7 +126,9 @@
     }
 
 .CurrentPhoto {
-    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top:9px;
 }
 
 div#MainMenu a {

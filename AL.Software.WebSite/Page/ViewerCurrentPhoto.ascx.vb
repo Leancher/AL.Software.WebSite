@@ -1,10 +1,4 @@
 ﻿
 Partial Class Page_ViewerCurrentPhoto
-    Inherits System.Web.UI.UserControl
-    Public Photo As String
-    Public Album As String
-    Private Sub Page_ViewerCurrentPhoto_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Album = Request.QueryString("ID")
-        Photo = Request.QueryString("Photo")
-    End Sub
+    Inherits UserControl
 End Class

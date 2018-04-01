@@ -105,6 +105,7 @@
 
 .PhotoGrid {
     display: block;
+    text-align: center;
     margin-top: 18px;
 }
 
@@ -125,14 +126,9 @@
         color: var(--MyYellow);
     }
 
-.CurrentPhoto {
-    display: block;
-    text-align: center;
-    margin-top: 9px;  
+.CurrentPhoto img {
+    height: 75vh;
 }   
-    .CurrentPhoto img{
-        height: 75vh;
-    }
 
 div#MainMenu a {
     width: 160px;

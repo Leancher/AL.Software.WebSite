@@ -27,8 +27,7 @@
     <div class="ContentLocate">
         <div class="ContentCaption">
             <% Response.Write(Caption) %>
-        </div>
-        
+        </div>  
         <asp:PlaceHolder ID="CategoryPlaceHolder" runat="server" />
 
         <div class="ContentColumn">     

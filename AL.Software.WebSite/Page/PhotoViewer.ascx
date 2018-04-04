@@ -6,20 +6,17 @@
     var Photo;
     var CategoryAlbum;
     var DecimalPlace = '0';
+    var HTMLString = '';
 
     function SelectContentToShow() {
         GetValueQueryString();
-        if (Photo == undefined)
+        if (Photo != undefined)
         {
-            ShowGallery();
+            ShowPhoto();
         }
         else
         {
-            //var Path = '<img src="../Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + 'Preview/' + Photo + '"/>';
-            alert (location.href);
-            var Path1 = '<div><img src= "../Pictures/MyPhoto/Album01Preview/photo01.JPG" /></div>';
-            alert(Path1);
-        document.getElementById("ShowContent").innerHTML = Path1;
+            ShowGallery();
         }
           
     }
@@ -38,7 +35,7 @@
         }
     }
     var ListPhotos;
-    var HTMLString = '';
+    
     function ShowGallery() {
         var Request = new XMLHttpRequest();
         Request.open('GET', 'GetPhotos.aspx?Command=ListPhoto&Category=' + CategoryAlbum + '&Album=' + NumberAlbum, true);
@@ -51,40 +48,51 @@
         }
         Request.send();
     }
-    var WebPath = location.origin + '/Page/MainPage.aspx';
+    var WebPath = location.origin+ '/Page/MainPage.aspx';
     function SetPhotoGrid() {
         for (var i = 0; i < ListPhotos.length; i++) {
             HTMLString = HTMLString + '<div class="PhotoCell">';
-            HTMLString = HTMLString + '<a href="' + WebPath + '?category=' + CategoryAlbum + '&ID=' + NumberAlbum + '&Photo=' + ListPhotos[i] + '">';
+            HTMLString = HTMLString + '<a href="/" onclick="ShowPhoto(event, \u0027'+ ListPhotos[i] +'\u0027)">';
             HTMLString = HTMLString + '<div>';
             HTMLString = HTMLString + '<img src="../Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + 'Preview/' + ListPhotos[i] + '"/>';
             HTMLString = HTMLString + '</div>';
             HTMLString = HTMLString + '</a>';
             HTMLString = HTMLString + '</div>';
-        }       
-        document.getElementById("ShowContent").innerHTML = HTMLString;     
+        }
+        document.getElementById("ShowContent").innerHTML = HTMLString;
     }
 
-    //function BtNext_Click(event) {
-    //    Number = Number + 1;
-    //    Path = '<img src="../Pictures/MyPhoto/Album01Preview/' + ListPhotos[Number-1] + '" />';
-    //    Content.innerHTML = Path;
-    //    event.preventDefault();
-    //}
-    //function BtPrev_Click(event) {
-    //    Number = Number - 1;
-    //    Path = '<img src="../Pictures/MyPhoto/Album01Preview/' + ListPhotos[Number-1] + '" />';
-    //    Content.innerHTML = Path;
-    //    event.preventDefault();
-    //}
+    
+
+    function ShowPhoto(event, Photo2) {
+        //var Path = '<img src="../Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + 'Preview/' + Photo + '"/>';
+        alert(Photo2);
+        HTMLString = '<img src= "../Pictures/Noimage.jpg" />';
+        document.getElementById("ShowContent").innerHTML = HTMLString;
+        event.preventDefault();
+    }
+
+    function BtNext_Click(event) {
+        HTMLString = '';
+        HTMLString = '<img src="../Pictures/MyPhoto/Album01Preview/' + ListPhotos[5] + '" />';
+        document.getElementById("ShowContent").innerHTML = HTMLString;
+        event.preventDefault();        
+    }
+    function BtPrev_Click(event) {
+
+
+        HTMLString = '';
+        HTMLString = '<img src="../Pictures/MyPhoto/Album01Preview/' + ListPhotos[1] + '" />';
+        document.getElementById("ShowContent").innerHTML = HTMLString;
+        event.preventDefault();
+    }
 </script>
 <div style ="display:flex">
     <div style="display: flex;align-items:center;height:75vh;width:50px">
         <button onclick="BtPrev_Click(event)">Prev</button>
     </div>
-    <div id="ShowContent" style="margin:auto;margin-top:18px">
-        <asp:Image ID="SinglePhotoPlace" CssClass ="CurrentPhoto" runat ="server" />
-        <asp:Label ID = "GalleryPlace" runat="server"/>
+    <div id="ShowContent" style="margin:auto;margin-top:18px;border:1px black solid">
+        
     </div>
     <div style="margin-left:auto; display: flex;align-items:center;height:75vh;width:50px ">
         <button onclick="BtNext_Click(event)">Next</button>

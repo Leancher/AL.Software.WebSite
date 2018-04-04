@@ -65,7 +65,6 @@
             PhotoModule = "PhotoViewer.ascx"
             ArticleModule = ""
         End If
-        'If Request.QueryString("Photo") <> Nothing Then PhotoModule = "ViewerCurrentPhoto.ascx"
         Caption = Database.GetItemByID(TableName, ID, "Caption")
         Description = Database.GetItemByID(TableName, ID, "Description")
     End Sub

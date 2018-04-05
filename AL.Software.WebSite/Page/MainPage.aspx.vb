@@ -31,7 +31,9 @@
         Catch ex As Exception
             Config.ShowError = "Такой страницы не существует"
         End Try
-        UpdateCountView()
+        '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        'UpdateCountView()
+        '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         LogoPicName = "../" + Config.PicturesFolder + "/Logo/" + CategoryName + ".png"
         Description = "<meta name='description' content='" + Description + "' />"
         TitlePage = Database.GetItemByName(Config.CategoryTable, CategoryName, "Caption")

@@ -95,10 +95,10 @@
     }
 </script>
 <div style ="display:flex">
-    <div style="display: flex;align-items:center;height:75vh;width:50px;border:1px black solid">
+    <div style="margin-right:auto ; display: flex;align-items:center;height:75vh;width:50px;border:1px black solid">
         <button id="BtPrev" onclick="BtPrev_Click(event)">Prev</button>
     </div>
-    <div id="PhotoPlace" class="PhotoGrid">
+    <div id="PhotoPlace" class="PhotoPlace">
         
     </div>
     <div style="margin-left:auto; display: flex;align-items:center;height:75vh;width:50px;border:1px black solid ">

@@ -103,10 +103,9 @@
     padding-bottom:9px;
 }
 
-.PhotoGrid {
-    margin: auto;
-    margin-top: 18px;
-    border: 1px black solid;
+.PhotoPlace {
+    text-align: center;
+    margin: 0 auto;
 }
 
 .PhotoCell {
@@ -126,7 +125,11 @@
     }
 
 .CurrentPhoto {
+    
+    display: inline-block;
     height: 75vh;
+    margin: 0 auto;
+    margin-top:18px;
 }   
 
 div#MainMenu a {

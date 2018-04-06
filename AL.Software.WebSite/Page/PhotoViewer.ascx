@@ -10,20 +10,14 @@
     var PhotoPlace;
     var ListPhotos;
     var CurrentNumberPhoto;
+    var BtNext, BtPrev;
 
     function SelectContentToShow() {
-
         PhotoPlace = document.getElementById("PhotoPlace");
+        BtNext = document.getElementById("BtNext1");
+        BtPrev = document.getElementById("BtPrev1");
         GetValueQueryString();
-        if (Photo != undefined)
-        {
-            ShowPhoto();
-        }
-        else
-        {
-            ShowGallery();
-        }
-          
+        ShowGallery();
     }
 
     function GetValueQueryString() {
@@ -39,8 +33,7 @@
             if (name == 'Photo') Photo = value;      
         }
     }
-
-    
+   
     function ShowGallery() {
         var Request = new XMLHttpRequest();
         Request.open('GET', 'GetPhotos.aspx?Command=ListPhoto&Category=' + CategoryAlbum + '&Album=' + NumberAlbum, true);
@@ -55,6 +48,8 @@
     }
 
     function SetPhotoGrid() {
+        BtPrev.style.display = 'none';
+        BtNext.style.display = 'none';
 
         for (var i = 0; i < ListPhotos.length; i++) {
             HTMLString = HTMLString + '<div class="PhotoCell">';
@@ -69,6 +64,8 @@
     }
 
     function ShowPhoto(event, PhotoNumber) {
+        BtPrev.style.display = 'block';
+        BtNext.style.display = 'block';
         CurrentNumberPhoto = +PhotoNumber; // + означет, что переменная число
         HTMLString = '<img src="../Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + '/' + ListPhotos[PhotoNumber] + '" class="CurrentPhoto"/>';
         PhotoPlace.innerHTML = HTMLString;
@@ -95,13 +92,19 @@
     }
 </script>
 <div style ="display:flex">
-    <div style="margin-right:auto ; display: flex;align-items:center;height:75vh;width:50px;border:1px black solid">
-        <button id="BtPrev" onclick="BtPrev_Click(event)">Prev</button>
-    </div>
+        <div class="Button">
+            <a href ="/" id="BtPrev1" onclick ="BtPrev_Click(event)" style="display:block">         
+                <img src="../Pictures/Util/ArrowLDis.png" onmousemove="this.src='../Pictures/Util/ArrowLEn.png'" onmouseout="this.src='../Pictures/Util/ArrowLDis.png'" />
+            </a>
+        </div>
+<%--        <button id="BtPrev" onclick="BtPrev_Click(event)">Prev</button>--%>
     <div id="PhotoPlace" class="PhotoPlace">
         
     </div>
-    <div style="margin-left:auto; display: flex;align-items:center;height:75vh;width:50px;border:1px black solid ">
-        <button id="BtNext" onclick="BtNext_Click(event)">Next</button>
+    <div class="Button">
+        <a href ="/" id="BtNext1" onclick ="BtNext_Click(event)" style="display:block">         
+            <img src="../Pictures/Util/ArrowRDis.png" onmousemove="this.src='../Pictures/Util/ArrowREn.png'" onmouseout="this.src='../Pictures/Util/ArrowRDis.png'" />
+        </a>
+<%--        <button id="BtNext" onclick="BtNext_Click(event)">Next</button>--%>
     </div>
 </div>

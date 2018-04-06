@@ -13,14 +13,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID ="Statistics" runat ="server" >
-    <%  
-        Response.Write("<a href ='" + Config.DefaultPage + "?category=statistics'>Статистика</a>")
-    %>
+    <asp:HyperLink id="Stat" runat="server" CssClass ="Text" Text="Статистика" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PageHolder" Runat="Server">
     <div class="MainMenuLocate">
-        <div id="MainMenu">
+        <div class="MainMenu">
             <asp:PlaceHolder ID="MainMenuHolder" runat="server" /> 
         </div>
     </div>

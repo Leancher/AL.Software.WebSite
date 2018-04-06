@@ -32,13 +32,6 @@
     margin-left: var(--GlobalMarginLeft);
 }
 
-.MainMenuLocate {
-    display: inline-block;
-    width: 178px;
-    vertical-align: top;
-    margin-top:18px;
-}
-
 .ContentLocate {
     display: inline-block;
     width: calc(100% - 202px);
@@ -130,9 +123,16 @@
     height: 75vh;
     margin: 0 auto;
     margin-top:18px;
-}   
+}
 
-div#MainMenu a {
+.MainMenuLocate {
+    display: inline-block;
+    width: 178px;
+    vertical-align: top;
+    margin-top: 18px;
+}
+
+.MainMenu a {
     width: 160px;
     height: 54px;
     display: flex;
@@ -144,7 +144,24 @@ div#MainMenu a {
     color: Black;
 }
 
-    div#MainMenu a:hover {
+    .MainMenu a:hover {
         background-color: var(--MyDarkGrey);
         color: var(--MyYellow);
     }
+
+.Text {
+    font: bold 1.1em var(--GlobalFont);
+    color: var(--MyDarkGrey);
+    text-decoration: none;
+}
+    .Text:hover {
+        font-size: 1.2em;
+    }
+
+.Button {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    height: 75vh;
+    text-align:center;
+}

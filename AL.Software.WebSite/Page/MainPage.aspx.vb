@@ -14,6 +14,7 @@
     Private TableName As String = ""
 
     Private Sub Page_Default_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Stat.NavigateUrl = Config.DefaultPage + "?category=statistics"
         Config.ShowError = ""
         Database.DatabaseOpen()
         CategoryName = Request.QueryString("category")

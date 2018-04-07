@@ -3,8 +3,6 @@
     Public CategoryModule As String = ""
     Public ArticleModule As String = ""
     Public PhotoModule As String = ""
-    Public Caption As String = ""
-    Public LogoPicName As String = ""
     Public Description As String = ""
     Public ShowError As String = ""
     Public TitlePage As String = ""
@@ -35,7 +33,7 @@
         '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         'UpdateCountView()
         '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        LogoPicName = "../" + Config.PicturesFolder + "/Logo/" + CategoryName + ".png"
+        LogoPic.ImageUrl = "../" + Config.PicturesFolder + "/Logo/" + CategoryName + ".png"
         Description = "<meta name='description' content='" + Description + "' />"
         TitlePage = Database.GetItemByName(Config.CategoryTable, CategoryName, "Caption")
         If CategoryName = "statistics" Then TitlePage = "Статистика"
@@ -48,7 +46,7 @@
     End Sub
     Private Sub ShowCategory()
         If CategoryName = "statistics" Then
-            Caption = "Статистика"
+            Caption.InnerText = "Статистика"
             CategoryModule = "Statistics.ascx"
             Exit Sub
         End If
@@ -57,7 +55,7 @@
         Dim IsTileGrid As String = Database.GetItemByName(TableName, CategoryName, "IsTileGrid")
         If IsTileGrid = "1" Then CategoryModule = "CategoryTileGrid.ascx"
         ID = Database.GetItemByName(TableName, CategoryName, "ID")
-        Caption = Database.GetItemByName(TableName, CategoryName, "Caption")
+        Caption.InnerText = Database.GetItemByName(TableName, CategoryName, "Caption")
         Description = Database.GetItemByName(TableName, CategoryName, "Description")
     End Sub
     Private Sub ShowArticle()
@@ -68,7 +66,7 @@
             PhotoModule = "PhotoViewer.ascx"
             ArticleModule = ""
         End If
-        Caption = Database.GetItemByID(TableName, ID, "Caption")
+        Caption.InnerText = Database.GetItemByID(TableName, ID, "Caption")
         Description = Database.GetItemByID(TableName, ID, "Description")
     End Sub
     Private Sub UpdateCountView()

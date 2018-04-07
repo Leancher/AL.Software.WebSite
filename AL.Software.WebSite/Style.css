@@ -117,10 +117,9 @@
         color: var(--MyYellow);
     }
 
-.CurrentPhoto {
-    
+.CurrentPhoto {  
     display: inline-block;
-    height: 75vh;
+    height: 73vh;
     margin: 0 auto;
     margin-top:18px;
 }
@@ -150,6 +149,8 @@
     }
 
 .Text {
+    width:200px;
+    height: 20px;
     font: bold 1.1em var(--GlobalFont);
     color: var(--MyDarkGrey);
     text-decoration: none;

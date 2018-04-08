@@ -5,19 +5,20 @@
     Public PhotoModule As String = ""
     Public Description As String = ""
     Public ShowError As String = ""
-    Public TitlePage As String = ""
     Private Database As New DatabaseConnect()
     Private CategoryName As String = ""
     Shadows ID As String = ""
     Private TableName As String = ""
+    Private SiteTemplate As ASP.masterpage_sitetemplate_master
 
     Private Sub Page_Default_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Stat.NavigateUrl = Config.DefaultPage + "?category=statistics"
+        SiteTemplate = Master
         Config.ShowError = ""
         Database.DatabaseOpen()
         CategoryName = Request.QueryString("category")
         ID = Request.QueryString("ID")
-        MainMenuHolder.Controls.Add(Page.LoadControl("MainMenu.ascx"))
+        SiteTemplate.MainMenuModule = "MainMenu.ascx"
+        'MainMenuHolder.Controls.Add(Page.LoadControl("MainMenu.ascx"))
         If ID = "0" Then CategoryName = Config.CategoryMain
         If CategoryName = Nothing Then CategoryName = Config.CategoryMain
         If CInt(ID) > 0 Then ShowArticle()
@@ -33,10 +34,12 @@
         '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         'UpdateCountView()
         '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        LogoPic.ImageUrl = "../" + Config.PicturesFolder + "/Logo/" + CategoryName + ".png"
-        Description = "<meta name='description' content='" + Description + "' />"
-        TitlePage = Database.GetItemByName(Config.CategoryTable, CategoryName, "Caption")
-        If CategoryName = "statistics" Then TitlePage = "Статистика"
+        SiteTemplate.LnkStat = Config.DefaultPage + "?category=statistics"
+        SiteTemplate.LogoPicture = "../" + Config.PicturesFolder + "/Logo/" + CategoryName + ".png"
+        'Description = "<meta name='description' content='" + Description + "' />"
+        SiteTemplate.Page.MetaDescription = "<meta name='description' content='" + Description + "' />"
+        SiteTemplate.Page.Title = Database.GetItemByName(Config.CategoryTable, CategoryName, "Caption") + " - " + Config.SiteTitle
+        If CategoryName = "statistics" Then SiteTemplate.Page.Title = "Статистика"
         Database.DatabaseClose()
     End Sub
     Private Sub CheckModule()

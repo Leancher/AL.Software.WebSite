@@ -1,27 +1,28 @@
-﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
-
+﻿<%@ Master Language="VB" CodeFile="SiteTemplate.master.vb" Inherits="SiteTemplate" %>
 <!DOCTYPE html>
 
 <html>
 <head runat="server">
-    <title>
-        <asp:ContentPlaceHolder ID="SiteTitle" runat ="server" />
-    </title>
-    <asp:ContentPlaceHolder ID="MetaDescription" runat ="server" />
+    <title></title>   
     <link rel="stylesheet" href="../Style.css" />
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="header">
             <div class="HeaderTitle">
-                <asp:ContentPlaceHolder ID="LogoPlaceHolder" runat ="server"/>
+                <asp:Image ID="LogoPic" runat ="server" />
                 LEANCHER 
             </div>
             <div style="margin-left:auto;margin-right:18px">
-                <asp:ContentPlaceHolder ID="Statistics" runat ="server"/>
+                <asp:HyperLink id="lbStat" runat="server" CssClass ="Text" Text="Статистика" />
             </div>          
         </div>
         <div class="Body">
+            <div class="MainMenuLocate">
+                <div class="MainMenu">
+                    <asp:PlaceHolder ID="MainMenuHolder" runat="server" /> 
+                </div>
+            </div>
             <asp:ContentPlaceHolder ID="PageHolder" runat="server"/>
         </div>
     </form>

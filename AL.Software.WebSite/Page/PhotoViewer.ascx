@@ -92,7 +92,7 @@
         event.preventDefault();
     }
 </script>
-<a href ="/" id="ReturnBack" onclick="SetPhotoGrid(event)" style="display:block" class="Text">Вернуться в галлерею</a>         
+<a href ="/" id="ReturnBack" onclick="SetPhotoGrid(event)" style="display:none" class="Text">Вернуться в галлерею</a>         
 <div style ="display:flex">
     <div class="Button">
         <a href ="/" id="BtPrev" onclick ="BtPrev_Click(event)" style="display:block">         

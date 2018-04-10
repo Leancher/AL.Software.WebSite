@@ -1,19 +1,43 @@
 ﻿Partial Class SiteTemplate
     Inherits MasterPage
-    Public Property Caption As String
+    Public Property ContentBlockProperty As Panel
         Get
-            Return TextCaption.Text
+            Return ContentBlock
         End Get
-        Set(value As String)
-            TextCaption.Text = value
+        Set(value As Panel)
+            ContentBlock = value
         End Set
     End Property
-    Public Property ShowError As String
+    Public Property MenuBlockProperty As Panel
         Get
-            Return LbError.Text
+            Return MenuBlock
         End Get
-        Set(value As String)
-            LbError.Text = value
+        Set(value As Panel)
+            MenuBlock = value
+        End Set
+    End Property
+    Public Property CaptionProperty As Label
+        Get
+            Return TextCaption
+        End Get
+        Set(value As Label)
+            TextCaption = value
+        End Set
+    End Property
+    Public Property ImgBackgroundProperty As Image
+        Get
+            Return ImgBackground
+        End Get
+        Set(value As Image)
+            ImgBackground = value
+        End Set
+    End Property
+    Public Property ErrorMessageProperty As Label
+        Get
+            Return ErrorMessage
+        End Get
+        Set(value As Label)
+            ErrorMessage = value
         End Set
     End Property
     Public Property PhotoModule As String
@@ -40,7 +64,7 @@
             CategoryHolder.Controls.Add(Page.LoadControl(value))
         End Set
     End Property
-    Public Property MainMenuModule As String
+    Public Property MenuFilePath As String
         Get
             Return MainMenuHolder.Controls.ToString
         End Get
@@ -65,4 +89,3 @@
         End Set
     End Property
 End Class
-

@@ -32,7 +32,20 @@
     margin-left: var(--GlobalMarginLeft);
 }
 
-.ContentLocate {
+.MainMenuLocate {
+    display: inline-block;
+    width: 178px;
+    vertical-align: top;
+    margin-top: 18px;
+}
+
+.ContentAllWidth {
+    display: inline-block;
+    width: 100%;
+    margin-top: 18px;
+}
+
+.ContentRegularWidth {
     display: inline-block;
     width: calc(100% - 202px);
     margin-top: 18px;
@@ -124,14 +137,7 @@
     margin-top:18px;
 }
 
-.MainMenuLocate {
-    display: inline-block;
-    width: 178px;
-    vertical-align: top;
-    margin-top: 18px;
-}
-
-.MainMenu a {
+.MenuList a {
     width: 160px;
     height: 54px;
     display: flex;
@@ -143,7 +149,7 @@
     color: Black;
 }
 
-    .MainMenu a:hover {
+    .MenuList a:hover {
         background-color: var(--MyDarkGrey);
         color: var(--MyYellow);
     }

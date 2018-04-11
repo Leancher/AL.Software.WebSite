@@ -12,24 +12,27 @@
 
     Private Sub Page_Default_Load(sender As Object, e As EventArgs) Handles Me.Load
         SiteTemplate = Master
-        SiteTemplate.ErrorMessageProperty.Text = ""
+        'SiteTemplate.ErrorMessageProperty.Text = ""
         'ShowMainPage()
         Database.DatabaseOpen()
         CategoryName = Request.QueryString("category")
         ID = Request.QueryString("ID")
-        SiteTemplate.MenuFilePath = "MainMenu.ascx"
+
+        'SiteTemplate.MenuFilePath = "MainMenu.ascx"
         'SiteTemplate.MenuFilePath = "Empty.ascx"
         If ID = "0" Then CategoryName = Config.CategoryMain
         If CategoryName = Nothing Then CategoryName = Config.CategoryMain
+        If CategoryName = Config.CategoryMain Then SiteTemplate.SiteBodyProperty.Controls.Add(Page.LoadControl("PageMain.ascx"))
         If CInt(ID) > 0 Then ShowArticle()
         If ID = Nothing Then ShowCategory()
         CheckModule()
+
         Try
-            SiteTemplate.PhotoModule = PhotoModule
-            SiteTemplate.ArticleModule = ArticleModule
-            SiteTemplate.CategoryModule = CategoryModule
+            'SiteTemplate.PhotoModule = PhotoModule
+            'SiteTemplate.ArticleModule = ArticleModule
+            'SiteTemplate.CategoryModule = CategoryModule
         Catch ex As Exception
-            SiteTemplate.ErrorMessageProperty.Text = "Такой страницы не существует"
+            'SiteTemplate.ErrorMessageProperty.Text = "Такой страницы не существует"
         End Try
         '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         'UpdateCountView()
@@ -42,11 +45,11 @@
         Database.DatabaseClose()
     End Sub
     Private Sub ShowMainPage()
-        SiteTemplate.MenuBlockProperty.Visible = False
-        SiteTemplate.ContentBlockProperty.CssClass = "ContentAllWidth"
-        SiteTemplate.CaptionProperty.Visible = False
-        SiteTemplate.ErrorMessageProperty.Visible = False
-        SiteTemplate.ImgBackgroundProperty.Visible = True
+        'SiteTemplate.MenuBlockProperty.Visible = False
+        'SiteTemplate.ContentBlockProperty.CssClass = "ContentAllWidth"
+        'SiteTemplate.CaptionProperty.Visible = False
+        'SiteTemplate.ErrorMessageProperty.Visible = False
+        'SiteTemplate.ImgBackgroundProperty.Visible = True
 
     End Sub
     Private Sub CheckModule()
@@ -56,7 +59,7 @@
     End Sub
     Private Sub ShowCategory()
         If CategoryName = "statistics" Then
-            SiteTemplate.CaptionProperty.Text = "Статистика"
+            'SiteTemplate.CaptionProperty.Text = "Статистика"
             CategoryModule = "Statistics.ascx"
             Exit Sub
         End If
@@ -65,7 +68,7 @@
         Dim IsTileGrid As String = Database.GetItemByName(TableName, CategoryName, "IsTileGrid")
         If IsTileGrid = "1" Then CategoryModule = "CategoryTileGrid.ascx"
         ID = Database.GetItemByName(TableName, CategoryName, "ID")
-        SiteTemplate.CaptionProperty.Text = Database.GetItemByName(TableName, CategoryName, "Caption")
+        'SiteTemplate.CaptionProperty.Text = Database.GetItemByName(TableName, CategoryName, "Caption")
         Description = Database.GetItemByName(TableName, CategoryName, "Description")
     End Sub
     Private Sub ShowArticle()
@@ -76,7 +79,7 @@
             PhotoModule = "PhotoViewer.ascx"
             ArticleModule = ""
         End If
-        SiteTemplate.CaptionProperty.Text = Database.GetItemByID(TableName, ID, "Caption")
+        'SiteTemplate.CaptionProperty.Text = Database.GetItemByID(TableName, ID, "Caption")
         Description = Database.GetItemByID(TableName, ID, "Description")
     End Sub
     Private Sub UpdateCountView()

@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div class="header">
             <div class="HeaderTitle">
-                <asp:Image ID="LogoPic" runat ="server" />
+                <asp:Image ID="LogoPic" runat="server" />
                 LEANCHER 
             </div>
             <div style="margin-left:auto;margin-right:18px">
@@ -18,8 +18,9 @@
             </div>          
         </div>
         <div class="Body">
+            <asp:PlaceHolder runat="server" ID="SiteBody" />
             <asp:Image runat="server" Visible="false" ImageUrl="~/Pictures/background.jpg" Width="100%" ID="ImgBackground"/>
-            <asp:Panel ID="MenuBlock" runat ="server" CssClass="MainMenuLocate">
+            <asp:Panel ID="MenuBlock" runat="server" CssClass="MainMenuLocate">
                 <div class="MenuList">
                     <asp:PlaceHolder ID="MainMenuHolder" runat="server" /> 
                 </div>

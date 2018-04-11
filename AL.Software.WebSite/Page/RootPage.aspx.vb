@@ -47,6 +47,7 @@
         SiteTemplate.CaptionProperty.Visible = False
         SiteTemplate.ErrorMessageProperty.Visible = False
         SiteTemplate.ImgBackgroundProperty.Visible = True
+
     End Sub
     Private Sub CheckModule()
         If CategoryModule = Nothing Then CategoryModule = "Empty.ascx"

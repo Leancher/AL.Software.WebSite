@@ -34,7 +34,7 @@
    
     function ShowGallery() {
         var Request = new XMLHttpRequest();
-        Request.open('GET', 'GetPhotos.aspx?Command=ListPhoto&Category=' + CategoryAlbum + '&Album=' + NumberAlbum, true);
+        Request.open('GET', 'Page/GetPhotos.aspx?Command=ListPhoto&Category=' + CategoryAlbum + '&Album=' + NumberAlbum, true);
         Request.onreadystatechange = function () {
             if (Request.readyState == 4) {
                 var ResponseString = Request.responseText;
@@ -54,7 +54,7 @@
             HTMLString = HTMLString + '<div class="PhotoCell">';
             HTMLString = HTMLString + '<a href="/" onclick="ShowPhoto(event, \u0027'+ i +'\u0027)">';
             HTMLString = HTMLString + '<div>';
-            HTMLString = HTMLString + '<img src="../Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + 'Preview/' + ListPhotos[i] + '"/>';
+            HTMLString = HTMLString + '<img src="Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + 'Preview/' + ListPhotos[i] + '"/>';
             HTMLString = HTMLString + '</div>';
             HTMLString = HTMLString + '</a>';
             HTMLString = HTMLString + '</div>';
@@ -78,7 +78,7 @@
         if (CurrentNumberPhoto > ListPhotos.length-1) {
             CurrentNumberPhoto = ListPhotos.length-1;
         }                        
-        HTMLString = '<img src="../Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto] + '" class="CurrentPhoto"/>';
+        HTMLString = '<img src="Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto] + '" class="CurrentPhoto"/>';
         PhotoPlace.innerHTML = HTMLString;
         event.preventDefault();        
     }
@@ -87,7 +87,7 @@
         if (CurrentNumberPhoto < 0) {
             CurrentNumberPhoto = 0;
         }                   
-        HTMLString = '<img src="../Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto] + '" class="CurrentPhoto"/>';
+        HTMLString = '<img src="Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto] + '" class="CurrentPhoto"/>';
         PhotoPlace.innerHTML = HTMLString;
         event.preventDefault();
     }
@@ -96,7 +96,7 @@
 <div style ="display:flex">
     <div class="Button">
         <a href ="/" id="BtPrev" onclick ="BtPrev_Click(event)" style="display:block">         
-            <img src="../Pictures/Util/ArrowLDis.png" onmousemove="this.src='../Pictures/Util/ArrowLEn.png'" onmouseout="this.src='../Pictures/Util/ArrowLDis.png'" />
+            <img src="Pictures/Util/ArrowLDis.png" onmousemove="this.src='Pictures/Util/ArrowLEn.png'" onmouseout="this.src='Pictures/Util/ArrowLDis.png'" />
         </a>
     </div>
     <div id="PhotoPlace" class="PhotoPlace">
@@ -104,7 +104,7 @@
     </div>
     <div class="Button">
         <a href ="/" id="BtNext" onclick ="BtNext_Click(event)" style="display:block">         
-            <img src="../Pictures/Util/ArrowRDis.png" onmousemove="this.src='../Pictures/Util/ArrowREn.png'" onmouseout="this.src='../Pictures/Util/ArrowRDis.png'" />
+            <img src="Pictures/Util/ArrowRDis.png" onmousemove="this.src='Pictures/Util/ArrowREn.png'" onmouseout="this.src='Pictures/Util/ArrowRDis.png'" />
         </a>
     </div>
 </div>

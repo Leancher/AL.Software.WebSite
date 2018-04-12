@@ -17,7 +17,9 @@
                 <asp:HyperLink id="lbStat" runat="server" CssClass ="Text" Text="Статистика" />
             </div>          
         </div>
+
         <div class="Body">
+        <%         %>
             <asp:PlaceHolder runat="server" ID="SiteBody" />
         </div>
     </form>

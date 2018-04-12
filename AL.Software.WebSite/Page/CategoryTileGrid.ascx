@@ -15,9 +15,9 @@
             PhotoPath = Config.AppPath + "Pictures\Preview\" + CatName + CurrentTile.ToString + ".jpg"
             Dim FileInfo As New System.IO.FileInfo(PhotoPath)
             'Пока считаем, что файла не существует
-            PhotoPath = "../" + Config.PicturesFolder + "/Noimage.jpg"
+            PhotoPath = Config.PicturesFolder + "/Noimage.jpg"
             'Если файл существует, то делаем относительный путь к файлу, полный путь не загружает картинки
-            If FileInfo.Exists = True Then PhotoPath = "../Pictures/Preview/" + CatName + CurrentTile.ToString + ".jpg"
+            If FileInfo.Exists = True Then PhotoPath = "Pictures/Preview/" + CatName + CurrentTile.ToString + ".jpg"
             Response.Write("<div class='TileCellPic'>")
             Response.Write("<img src=" + PhotoPath + ">")
             Response.Write("</div>")

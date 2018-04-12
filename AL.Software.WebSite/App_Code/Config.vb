@@ -3,7 +3,8 @@
     Public Shared SiteName As String = "myleancher.ru"
     Public Shared AppPath As String = AppDomain.CurrentDomain.BaseDirectory
 
-    Public Shared DefaultPage As String = WebPath + "/Page/RootPage.aspx"
+    Public Shared DefaultPage As String = WebPath + "/Default.aspx"
+    Public Shared PageFolder As String = "Page/"
     Public Shared PicturesFolder As String = "Pictures"
     Public Shared PreviewFolder As String = "Pictures/Preview"
     Public Shared ContentPhotoFolder As String = "Pictures/Content"

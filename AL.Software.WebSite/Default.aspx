@@ -10,16 +10,16 @@
     <form id="form1" runat="server">
         <div class="header">
             <div class="HeaderTitle">
-                <asp:Image ID="LogoPic" runat="server" />
-                LEANCHER 
+                <a href ="Default.aspx">
+                    <asp:Image ID="LogoPic" runat="server" />
+                    LEANCHER 
+                </a>
             </div>
             <div style="margin-left:auto;margin-right:18px">
                 <asp:HyperLink id="lbStat" runat="server" CssClass ="Text" Text="Статистика" />
             </div>          
         </div>
-
         <div class="Body">
-        <%         %>
             <asp:PlaceHolder runat="server" ID="SiteBody" />
         </div>
     </form>

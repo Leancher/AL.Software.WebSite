@@ -19,12 +19,15 @@
 }
 
 .HeaderTitle {
-    font-family: var(--GlobalFont);
-    font-weight: bold;
-    font-size: 72px;
-    color: var(--MyDarkGrey);
     padding-left: 18px;
 }
+    .HeaderTitle a{
+        font-family: var(--GlobalFont);
+        font-weight: bold;
+        font-size: 72px;
+        color: var(--MyDarkGrey);
+        text-decoration:none
+    }
 
 .Body {
     width: var(--GlobalWidth);

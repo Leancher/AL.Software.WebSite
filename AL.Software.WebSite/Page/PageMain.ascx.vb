@@ -1,6 +1,5 @@
-﻿
-Partial Class Page_MainPage
-    Inherits System.Web.UI.UserControl
+﻿Partial Class Page_MainPage
+    Inherits UserControl
     Private Sub Page_MainPage_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim NumberCategory As Integer
         Dim Database As New DatabaseConnect()
@@ -33,12 +32,12 @@ Partial Class Page_MainPage
 
     Function GetPhotoPath(Category As String, NumberCategory As Integer) As String
         'Получаем полный путь для проверки наличия файла
-        Dim PhotoPath As String = Config.AppPath + "Pictures\Preview\" + Category + NumberCategory.ToString + ".jpg"
+        Dim PhotoPath As String = Config.AppPath + "Pictures\Main\" + Category + ".png"
         Dim FileInfo As New System.IO.FileInfo(PhotoPath)
         'Пока считаем, что файла не существует
         PhotoPath = "../" + Config.PicturesFolder + "/Noimage.jpg"
         'Если файл существует, то делаем относительный путь к файлу, полный путь не загружает картинки
-        If FileInfo.Exists = True Then PhotoPath = "../Pictures/Preview/" + Category + NumberCategory.ToString + ".jpg"
+        If FileInfo.Exists = True Then PhotoPath = "../Pictures/Main/" + Category + ".png"
         Return PhotoPath
     End Function
 End Class

@@ -54,7 +54,7 @@
             HTMLString = HTMLString + '<div class="PhotoCell">';
             HTMLString = HTMLString + '<a href="/" onclick="ShowPhoto(event, \u0027'+ i +'\u0027)">';
             HTMLString = HTMLString + '<div>';
-            HTMLString = HTMLString + '<img src="Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + 'Preview/' + ListPhotos[i] + '"/>';
+            HTMLString = HTMLString + '<img src="Pictures/' + CategoryAlbum + '/album' + NumberAlbum + 'Preview/' + ListPhotos[i] + '"/>';
             HTMLString = HTMLString + '</div>';
             HTMLString = HTMLString + '</a>';
             HTMLString = HTMLString + '</div>';
@@ -68,7 +68,7 @@
         BtNext.style.display = 'block';
         ReturnBack.style.display = 'block';
         CurrentNumberPhoto = +PhotoNumber; // + означет, что переменная число
-        HTMLString = '<img src="../Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + '/' + ListPhotos[PhotoNumber] + '" class="CurrentPhoto"/>';
+        HTMLString = '<img src="../Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[PhotoNumber] + '" class="CurrentPhoto"/>';
         PhotoPlace.innerHTML = HTMLString;
         event.preventDefault();
     }
@@ -78,7 +78,7 @@
         if (CurrentNumberPhoto > ListPhotos.length-1) {
             CurrentNumberPhoto = ListPhotos.length-1;
         }                        
-        HTMLString = '<img src="Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto] + '" class="CurrentPhoto"/>';
+        HTMLString = '<img src="Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto] + '" class="CurrentPhoto"/>';
         PhotoPlace.innerHTML = HTMLString;
         event.preventDefault();        
     }
@@ -87,7 +87,7 @@
         if (CurrentNumberPhoto < 0) {
             CurrentNumberPhoto = 0;
         }                   
-        HTMLString = '<img src="Pictures/' + CategoryAlbum + '/album0' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto] + '" class="CurrentPhoto"/>';
+        HTMLString = '<img src="Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto] + '" class="CurrentPhoto"/>';
         PhotoPlace.innerHTML = HTMLString;
         event.preventDefault();
     }

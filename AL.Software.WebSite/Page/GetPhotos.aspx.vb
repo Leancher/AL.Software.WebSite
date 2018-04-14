@@ -9,7 +9,7 @@
         Dim ResponseString As String = ""
         If Command = "ListPhoto" Then
             Dim Index As Integer = 0
-            Dim Path As String = Config.AppPath + "Pictures\" + CategoryAlbum + "\Album0" + NumberAlbum + "Preview"
+            Dim Path As String = Config.AppPath + "Pictures\" + CategoryAlbum + "\Album" + NumberAlbum + "Preview"
             Try
                 Dim ListPhoto As String() = IO.Directory.GetFiles(Path)
                 'Удаление полного пути к рисункам, рисунок с полным путем не загружается

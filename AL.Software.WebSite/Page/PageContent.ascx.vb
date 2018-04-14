@@ -24,9 +24,6 @@
         Catch ex As Exception
             ErrorMessage.Text = "Такой страницы не существует"
         End Try
-        '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        'UpdateCountView()
-        '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         Database.DatabaseClose()
     End Sub
     Private Sub CheckModule()
@@ -53,20 +50,10 @@
         ArticleModule = "Content/" + CategoryName + ID + ".ascx"
         Dim IsPhotoAlbum As String = Database.GetItemByName(Config.CategoryTable, CategoryName, "IsPhotoAlbum")
         If IsPhotoAlbum = "1" Then
-            PhotoModule =Config.PageFolder + "PhotoViewer.ascx"
+            PhotoModule = Config.PageFolder + "PhotoViewer.ascx"
             ArticleModule = ""
         End If
         Caption.Text = Database.GetItemByID(TableName, ID, "Caption")
         Description = Database.GetItemByID(TableName, ID, "Description")
-    End Sub
-    Private Sub UpdateCountView()
-        If CategoryName = "statistics" Then Exit Sub
-        If Request.QueryString("Note") <> Nothing Then
-            ID = Request.QueryString("Note")
-            TableName = "MyNotes"
-        End If
-        Dim CountView As Integer = 0
-        CountView = CInt(Database.GetItemByID(TableName, ID, "Viewed")) + 1
-        Database.UpdateViewValue(TableName, ID, CountView.ToString)
     End Sub
 End Class

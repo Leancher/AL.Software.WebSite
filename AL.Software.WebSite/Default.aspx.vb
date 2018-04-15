@@ -21,7 +21,7 @@
         Page.MetaDescription = "<meta name='description' content='" + Description + "' />"
         Page.Title = Database.GetItemByName(Config.CategoryTable, CategoryName, "Caption") + " - " + Config.SiteTitle
         If CategoryName = "statistics" Then Page.Title = "Статистика"
-        If CategoryName <> "statistics" Then UpdateCountView()
+        'If CategoryName <> "statistics" Then UpdateCountView()
         Database.DatabaseClose()
     End Sub
     Private Sub UpdateCountView()

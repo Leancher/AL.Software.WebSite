@@ -42,13 +42,7 @@
     margin-top: 18px;
 }
 
-.ContentAllWidth {
-    display: inline-block;
-    width: 100%;
-    margin-top: 18px;
-}
-
-.ContentRegularWidth {
+.ContentBlock {
     display: inline-block;
     width: calc(100% - 202px);
     margin-top: 18px;
@@ -67,7 +61,7 @@
 }
 
 .ContentColumn {
-    width: 1000px;
+    width: 75%;
     margin: 0 auto;
 }
 

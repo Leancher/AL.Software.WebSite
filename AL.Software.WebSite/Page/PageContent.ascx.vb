@@ -9,9 +9,9 @@
     Private TableName As String = ""
     Private Description As String
     Private Sub Page_ContentPage_Load(sender As Object, e As EventArgs) Handles Me.Load
-        MenuBlock.Controls.Add(Page.LoadControl("Page/MainMenu.ascx"))
         ErrorMessage.Text = ""
         Database.DatabaseOpen()
+        SetMenu()
         CategoryName = Request.QueryString("category")
         ID = Request.QueryString("ID")
         If CInt(ID) > 0 Then ShowArticle()
@@ -55,5 +55,15 @@
         End If
         Caption.Text = Database.GetItemByID(TableName, ID, "Caption")
         Description = Database.GetItemByID(TableName, ID, "Description")
+    End Sub
+    Private Sub SetMenu()
+        Dim Category As String
+        For NumberCategory = 1 To Database.GetCountItem(Config.CategoryTable)
+            Dim ItemLink As New HyperLink()
+            Category = Database.GetItemByID(Config.CategoryTable, NumberCategory, "Name")
+            ItemLink.NavigateUrl = Config.DefaultPage + "?category=" + Category
+            ItemLink.Text = Database.GetItemByID(Config.CategoryTable, NumberCategory, "Caption")
+            MenuBlock.Controls.Add(ItemLink)
+        Next NumberCategory
     End Sub
 End Class

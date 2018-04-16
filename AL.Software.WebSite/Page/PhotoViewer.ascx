@@ -60,16 +60,23 @@
             HTMLString = HTMLString + '</div>';
         }
         PhotoPlace.innerHTML = HTMLString;
-        var PhotoCell = document.createElement('div');
-        PhotoCell.className = 'PhotoCell';
-        var img = document.createElement('img');
-        var lnk = document.createElement('a');
-        lnk.href = '../Default.aspx';
-        img.src = 'Pictures/Noimage.jpg';
-        lnk.appendChild(img);
-        PhotoCell.appendChild(lnk);
-        PhotoPlace.appendChild(PhotoCell);
 
+        for (var i = 0; i < ListPhotos.length; i++) {
+            var PhotoCell = document.createElement('div');
+            PhotoCell.className = 'PhotoCell';
+            var img = document.createElement('img');
+            img.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + 'Preview/' + ListPhotos[i];
+            var lnk = document.createElement('a');
+            lnk.href = '#';
+            lnk.onclick = function () {
+
+                ShowPhoto(event, NumberPhoto);
+                event.preventDefault();
+            }
+            lnk.appendChild(img);       
+            PhotoCell.appendChild(lnk);
+            PhotoPlace.appendChild(PhotoCell);
+        }
         event.preventDefault();        
     }
 

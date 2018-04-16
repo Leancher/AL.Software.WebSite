@@ -11,7 +11,7 @@
     var BtNext, BtPrev, ReturnBack, CurrentNumberPhoto;
     
     function SelectContentToShow() {
-        PhotoPlace = document.getElementById("PhotoPlace");
+        PhotoPlace = document.getElementById("PhotoPlace1");
         BtNext = document.getElementById("BtNext");
         BtPrev = document.getElementById("BtPrev");
         ReturnBack = document.getElementById("ReturnBack");
@@ -60,6 +60,16 @@
             HTMLString = HTMLString + '</div>';
         }
         PhotoPlace.innerHTML = HTMLString;
+        var PhotoCell = document.createElement('div');
+        PhotoCell.className = 'PhotoCell';
+        var img = document.createElement('img');
+        var lnk = document.createElement('a');
+        lnk.href = '../Default.aspx';
+        img.src = 'Pictures/Noimage.jpg';
+        lnk.appendChild(img);
+        PhotoCell.appendChild(lnk);
+        PhotoPlace.appendChild(PhotoCell);
+
         event.preventDefault();        
     }
 
@@ -99,7 +109,7 @@
             <img src="Pictures/Util/ArrowLDis.png" onmousemove="this.src='Pictures/Util/ArrowLEn.png'" onmouseout="this.src='Pictures/Util/ArrowLDis.png'" />
         </a>
     </div>
-    <div id="PhotoPlace" class="PhotoPlace">
+    <div id="PhotoPlace1" class="PhotoPlace">
         
     </div>
     <div class="Button">

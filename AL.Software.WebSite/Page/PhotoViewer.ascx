@@ -49,17 +49,17 @@
         BtPrev.style.display = 'none';
         BtNext.style.display = 'none';
         ReturnBack.style.display = 'none';
-        HTMLString = '';
-        for (var i = 0; i < ListPhotos.length; i++) {
-            HTMLString = HTMLString + '<div class="PhotoCell">';
-            HTMLString = HTMLString + '<a href="/" onclick="ShowPhoto(event, \u0027'+ i +'\u0027)">';
-            HTMLString = HTMLString + '<div>';
-            HTMLString = HTMLString + '<img src="Pictures/' + CategoryAlbum + '/album' + NumberAlbum + 'Preview/' + ListPhotos[i] + '"/>';
-            HTMLString = HTMLString + '</div>';
-            HTMLString = HTMLString + '</a>';
-            HTMLString = HTMLString + '</div>';
-        }
-        PhotoPlace.innerHTML = HTMLString;
+        //HTMLString = '';
+        //for (var i = 0; i < ListPhotos.length; i++) {
+        //    HTMLString = HTMLString + '<div class="PhotoCell">';
+        //    HTMLString = HTMLString + '<a href="/" onclick="ShowPhoto(event, \u0027'+ i +'\u0027)">';
+        //    HTMLString = HTMLString + '<div>';
+        //    HTMLString = HTMLString + '<img src="Pictures/' + CategoryAlbum + '/album' + NumberAlbum + 'Preview/' + ListPhotos[i] + '"/>';
+        //    HTMLString = HTMLString + '</div>';
+        //    HTMLString = HTMLString + '</a>';
+        //    HTMLString = HTMLString + '</div>';
+        //}
+        //PhotoPlace.innerHTML = HTMLString;
 
         for (var i = 0; i < ListPhotos.length; i++) {
             var PhotoCell = document.createElement('div');
@@ -67,10 +67,11 @@
             var img = document.createElement('img');
             img.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + 'Preview/' + ListPhotos[i];
             var lnk = document.createElement('a');
-            lnk.href = '#';
+            lnk.href = '#' + i;
+            lnk.id = i;
             lnk.onclick = function () {
-
-                ShowPhoto(event, NumberPhoto);
+                //alert(lnk.id);
+                ShowPhoto(event,i);
                 event.preventDefault();
             }
             lnk.appendChild(img);       
@@ -84,9 +85,11 @@
         BtPrev.style.display = 'block';
         BtNext.style.display = 'block';
         ReturnBack.style.display = 'block';
-        CurrentNumberPhoto = +PhotoNumber; // + означет, что переменная число
-        HTMLString = '<img src="../Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[PhotoNumber] + '" class="CurrentPhoto"/>';
-        PhotoPlace.innerHTML = HTMLString;
+        var str = location.hash.substring(1);
+        alert(str);
+        //CurrentNumberPhoto = +PhotoNumber; // + означет, что переменная число
+        //HTMLString = '<img src="../Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[PhotoNumber] + '" class="CurrentPhoto"/>';
+        //PhotoPlace.innerHTML = HTMLString;
         event.preventDefault();
     }
 

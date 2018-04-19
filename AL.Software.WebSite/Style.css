@@ -1,6 +1,7 @@
 ﻿:root {
     --MyYellow: #F2D13E;
     --MyDarkGrey: #3E454C;
+    --MyMiddleGrey: #828282;
     --MyLightGrey: #F6F6F6;
     --GlobalMarginLeft: 2%;
     --GlobalWidth: 94%;
@@ -152,14 +153,14 @@
     }
 
 .Text {
-    width:200px;
+    width: 200px;
     height: 20px;
     font: bold 1.1em var(--GlobalFont);
-    color: var(--MyDarkGrey);
+    color: var(--MyMiddleGrey);
     text-decoration: none;
 }
     .Text:hover {
-        font-size: 1.2em;
+        color: var(--MyDarkGrey);
     }
 
 .Button {

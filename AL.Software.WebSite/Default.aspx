@@ -16,7 +16,7 @@
                 </a>
             </div>
             <div style="margin-left:auto;margin-right:18px">
-                <asp:HyperLink id="lbStat" runat="server" CssClass ="Text" Text="Статистика" />
+                <asp:HyperLink id="lbStat" runat="server" CssClass ="HeaderMenu" Text="Статистика" />
             </div>          
         </div>
         <div class="Body">

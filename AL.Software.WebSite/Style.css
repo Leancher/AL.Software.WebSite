@@ -30,7 +30,20 @@
         text-decoration:none
     }
 
+.HeaderMenu {
+    width: 200px;
+    height: 20px;
+    font: bold 1.1em var(--GlobalFont);
+    color: var(--MyDarkGrey);
+    text-decoration: none;
+}
+
+    .HeaderMenu:hover {
+        font-size: 1.2em;
+    }
+
 .Body {
+    font-family: var(--GlobalFont);
     width: var(--GlobalWidth);
     height: 100%;
     margin-left: var(--GlobalMarginLeft);
@@ -113,11 +126,11 @@
 }
 
 .PhotoCell {
-    width: 142px;
-    margin-top:18px;
+    margin-top: 18px;
     margin-left: 9px;
     margin-right: 9px;
     display: inline-block;
+    vertical-align: middle;
 }
 
     .PhotoCell a {
@@ -152,14 +165,13 @@
         color: var(--MyYellow);
     }
 
-.Text {
-    width: 200px;
-    height: 20px;
-    font: bold 1.1em var(--GlobalFont);
+.TextLink {
+    font-weight:bold;
     color: var(--MyMiddleGrey);
     text-decoration: none;
 }
-    .Text:hover {
+
+    .TextLink:hover {
         color: var(--MyDarkGrey);
     }
 

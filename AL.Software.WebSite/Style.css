@@ -32,15 +32,11 @@
 
 .HeaderMenu {
     width: 200px;
-    height: 20px;
+    height: 18px;
     font: bold 1.1em var(--GlobalFont);
     color: var(--MyDarkGrey);
     text-decoration: none;
 }
-
-    .HeaderMenu:hover {
-        font-size: 1.2em;
-    }
 
 .Body {
     font-family: var(--GlobalFont);

@@ -1,6 +1,6 @@
 ﻿Partial Class Page_ShowTileGrid
     Inherits UserControl
-    Private Sub Page_MainPage_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub Page_ShowTileGrid_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim CurrentTile As Integer
         Dim Database As New DatabaseConnect()
         Dim Category As String = Request.QueryString("category")

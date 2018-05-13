@@ -2,7 +2,7 @@
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', ShowContent);
 
-    var PhotoPlace, SinglePhoto;
+    var PhotoPlace, SinglePhoto, LinkFullSize;
     var CurrentDocument;
     var NumberAlbum;
     var CategoryAlbum;
@@ -39,6 +39,8 @@
             if (Request.readyState == 4) {
                 var ResponseString = Request.responseText;
                 ListPhotos = ResponseString.split(";");
+                //Если файлов нет и строка пустая, список равен нулю
+                if (ResponseString == '') ListPhotos = 0;               
                 SetPhotoGrid();
             }
         }
@@ -49,23 +51,35 @@
         BtPrev.style.display = 'none';
         BtNext.style.display = 'none';
         ReturnBack.style.display = 'none';
-        if (PhotoPlace != undefined) Content.removeChild(PhotoPlace);       
+        //Если блок с фотками уже существует, то удаляем его
+        if (PhotoPlace != undefined) Content.removeChild(PhotoPlace);
+        //Создаем пустой блок
         PhotoPlace = CurrentDocument.createElement('div');
-        for (var i = 0; i < ListPhotos.length; i++) {
-            var PhotoCell = CurrentDocument.createElement('div');
-            PhotoCell.className = 'PhotoCell';
-            var img = CurrentDocument.createElement('img');
-            img.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + 'Preview/' + ListPhotos[i];
-            var lnk = CurrentDocument.createElement('a');
-            lnk.href = '#' + i;
-            lnk.onclick = function () {
-                var PhotoNumber = this.hash.substring(1);
-                ShowPhoto(event,PhotoNumber);
-                event.preventDefault();
+        //Если список фоток пуст, то пишем, что нет картинок
+        if (ListPhotos == 0)
+        {
+            PhotoPlace.innerText = "В этом альбоме нет картинок";
+        }
+        else
+        {
+            //Если картинки есть, то создаем сетку с фотками
+            for (var i = 0; i < ListPhotos.length; i++) {
+                var PhotoCell = CurrentDocument.createElement('div');
+                PhotoCell.className = 'PhotoCell';
+                var img = CurrentDocument.createElement('img');
+                img.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + 'Preview/' + ListPhotos[i];
+                var lnk = CurrentDocument.createElement('a');
+                //Через хэш в адресной строке пережаем номер картинки
+                lnk.href = '#' + i;
+                lnk.onclick = function () {
+                    var PhotoNumber = this.hash.substring(1);
+                    ShowPhoto(event,PhotoNumber);
+                    event.preventDefault();
+                }
+                lnk.appendChild(img);       
+                PhotoCell.appendChild(lnk);
+                PhotoPlace.appendChild(PhotoCell);
             }
-            lnk.appendChild(img);       
-            PhotoCell.appendChild(lnk);
-            PhotoPlace.appendChild(PhotoCell);
         }
         Content.appendChild(PhotoPlace);
         event.preventDefault();        
@@ -78,10 +92,16 @@
         CurrentNumberPhoto = +PhotoNumber; // + означет, что переменная число
         Content.removeChild(PhotoPlace);
         PhotoPlace = CurrentDocument.createElement('div');
+        //Создаем ссылку на картинку в полном размере
+        LinkFullSize = CurrentDocument.createElement('a');
+        LinkFullSize.href = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[PhotoNumber];
+        //Создаем картинку
         SinglePhoto = CurrentDocument.createElement('img');
         SinglePhoto.className = 'CurrentPhoto';
         SinglePhoto.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[PhotoNumber];
-        PhotoPlace.appendChild(SinglePhoto);
+        //Добавляем в тело ссылки каринку
+        LinkFullSize.appendChild(SinglePhoto);
+        PhotoPlace.appendChild(LinkFullSize);
         Content.appendChild(PhotoPlace);
         event.preventDefault();
     }

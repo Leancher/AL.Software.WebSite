@@ -15,8 +15,9 @@
                     LEANCHER 
                 </a>
             </div>
-            <div style="margin-left:auto;margin-right:18px">
-                <asp:HyperLink id="lbStat" runat="server" CssClass ="HeaderMenu" Text="Статистика" />
+            <div style="margin-left:auto;margin-right:18px;text-align:right">
+                <asp:HyperLink id="lbStat" runat="server" CssClass ="HeaderMenu" Text="Статистика" /><br />
+                <asp:HyperLink id="lbAbout" runat="server" CssClass ="HeaderMenu" Text="О сайте" />
             </div>          
         </div>
         <div class="Body">

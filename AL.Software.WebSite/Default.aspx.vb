@@ -2,10 +2,10 @@
     Inherits Page
     Private Database As New DatabaseConnect()
     Private CategoryName As String = ""
-    Private Description As String
     Private SiteBodyPage As String = ""
 
     Private Sub _Default_Load(sender As Object, e As EventArgs) Handles Me.Load
+        MetaString.Text = ""
         Database.DatabaseOpen()
         CategoryName = Request.QueryString("category")
         If CategoryName = Nothing Then CategoryName = Config.CategoryMain
@@ -18,10 +18,13 @@
         lbStat.NavigateUrl = Config.DefaultPage + "?category=statistics"
         lbAbout.NavigateUrl = Config.DefaultPage + "?category=about"
         LogoPic.ImageUrl = Config.PicturesFolder + "/Logo/" + CategoryName + ".png"
-        Description = Database.GetItemByName(Config.CategoryTable, CategoryName, "Description")
-        Page.MetaDescription = "<meta name='description' content='" + Description + "' />"
+        Page.MetaDescription = Database.GetItemByName(Config.CategoryTable, CategoryName, "Description")
         Page.Title = Database.GetItemByName(Config.CategoryTable, CategoryName, "Caption") + " - " + Config.SiteTitle
-        If CategoryName = "statistics" Then Page.Title = "Статистика" + " - " + Config.SiteTitle
+        If CategoryName = "statistics" Then
+            Page.Title = "Статистика" + " - " + Config.SiteTitle
+            MetaString.Text = "<meta name='robots' content='noindex'>"
+            Page.MetaDescription = ""
+        End If
         If CategoryName = "about" Then Page.Title = "О сайте" + " - " + Config.SiteTitle
         'If CategoryName <> "statistics" And CategoryName <> "about" Then UpdateCountView()
         Database.DatabaseClose()

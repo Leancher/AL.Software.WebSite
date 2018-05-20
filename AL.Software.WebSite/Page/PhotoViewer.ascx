@@ -108,13 +108,15 @@
 
     function BtNext_Click(event) {
         CurrentNumberPhoto = CurrentNumberPhoto + 1;  
-        if (CurrentNumberPhoto > ListPhotos.length-1) CurrentNumberPhoto = ListPhotos.length-1;    
+        if (CurrentNumberPhoto > ListPhotos.length - 1) CurrentNumberPhoto = ListPhotos.length - 1;
+        LinkFullSize.href = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto];
         SinglePhoto.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto];
         event.preventDefault();        
     }
     function BtPrev_Click(event) {
         CurrentNumberPhoto = CurrentNumberPhoto - 1;
-        if (CurrentNumberPhoto < 0) CurrentNumberPhoto = 0;                  
+        if (CurrentNumberPhoto < 0) CurrentNumberPhoto = 0;
+        LinkFullSize.href = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto];
         SinglePhoto.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto];
         event.preventDefault();
     }

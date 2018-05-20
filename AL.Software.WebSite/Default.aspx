@@ -5,6 +5,7 @@
 <head runat="server">
     <title></title>   
     <link rel="stylesheet" href="../Style.css" />
+    <asp:Literal ID="MetaString" runat="server" />
 </head>
 <body>
     <form id="form1" runat="server">

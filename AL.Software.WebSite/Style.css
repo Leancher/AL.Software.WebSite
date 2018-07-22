@@ -73,6 +73,7 @@
 .ContentColumn {
     width: 75%;
     margin: 0 auto;
+    margin-top:10px;
 }
 
 .TileGrid {
@@ -122,6 +123,7 @@
 }
 
 .PhotoCell {
+    width: 142px;
     margin-top: 18px;
     margin-left: 9px;
     margin-right: 9px;

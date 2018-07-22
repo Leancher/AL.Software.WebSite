@@ -7,7 +7,6 @@
     Private CategoryName As String = ""
     Shadows ID As String = ""
     Private TableName As String = ""
-    Private Description As String
     Private Sub Page_ContentPage_Load(sender As Object, e As EventArgs) Handles Me.Load
         ErrorMessage.Text = ""
         Database.DatabaseOpen()
@@ -15,10 +14,16 @@
         'Получаем данные из адресной строки
         CategoryName = Request.QueryString("category")
         ID = Request.QueryString("ID")
-        'Если значения ID нет, то показываем категорию, если есть, то поодкатегорию 
+        'Если значения ID нет, то показываем категорию, если есть, то - подкатегорию 
         If CInt(ID) > 0 Then ShowArticle()
         If ID = Nothing Then ShowCategory()
-        CheckModule()
+        SetModule()
+        Database.DatabaseClose()
+    End Sub
+    Private Sub SetModule()
+        If CategoryModule = Nothing Then CategoryModule = Config.PageFolder + "Empty.ascx"
+        If ArticleModule = Nothing Then ArticleModule = Config.PageFolder + "Empty.ascx"
+        If PhotoModule = Nothing Then PhotoModule = Config.PageFolder + "Empty.ascx"
         Try
             PhotoBlock.Controls.Add(Page.LoadControl(PhotoModule))
             ArticleBlock.Controls.Add(Page.LoadControl(ArticleModule))
@@ -26,12 +31,6 @@
         Catch ex As Exception
             ErrorMessage.Text = "Такой страницы не существует"
         End Try
-        Database.DatabaseClose()
-    End Sub
-    Private Sub CheckModule()
-        If CategoryModule = Nothing Then CategoryModule = Config.PageFolder + "Empty.ascx"
-        If ArticleModule = Nothing Then ArticleModule = Config.PageFolder + "Empty.ascx"
-        If PhotoModule = Nothing Then PhotoModule = Config.PageFolder + "Empty.ascx"
     End Sub
     Private Sub ShowCategory()
         'Если октрыта Статистика, то больше ничего не делаем
@@ -51,18 +50,20 @@
         If Database.GetItemByName(TableName, CategoryName, "IsTileGrid") = "1" Then CategoryModule = Config.PageFolder + "CategoryTileGrid.ascx"
         ID = Database.GetItemByName(TableName, CategoryName, "ID")
         Caption.Text = Database.GetItemByName(TableName, CategoryName, "Caption")
-        Description = Database.GetItemByName(TableName, CategoryName, "Description")
+        Page.Title = Caption.Text + " - " + Config.SiteTitle
+        Page.MetaDescription = Database.GetItemByName(TableName, CategoryName, "Description")
     End Sub
     Private Sub ShowArticle()
         TableName = CategoryName
         ArticleModule = "Content/" + CategoryName + ID + ".ascx"
         If Database.GetItemByID(TableName, ID, "IsPhotoAlbum") = "1" Then
             PhotoModule = Config.PageFolder + "PhotoViewer.ascx"
-            Dim FileInfo As New System.IO.FileInfo(Config.AppPath + "/" + ArticleModule)
+            Dim FileInfo As New IO.FileInfo(Config.AppPath + "/" + ArticleModule)
             If FileInfo.Exists = False Then ArticleModule = Config.PageFolder + "Empty.ascx"
         End If
         Caption.Text = Database.GetItemByID(TableName, ID, "Caption")
-        Description = Database.GetItemByID(TableName, ID, "Description")
+        Page.Title = Caption.Text + " - " + Config.SiteTitle
+        Page.MetaDescription = Database.GetItemByID(TableName, ID, "Description")
     End Sub
     Private Sub SetMenu()
         For NumberCategory = 1 To Database.GetCountItem(Config.CategoryTable)

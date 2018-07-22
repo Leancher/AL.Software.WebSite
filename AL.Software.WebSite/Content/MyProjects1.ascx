@@ -6,6 +6,5 @@
 Версия 3 выполнена на одной плате, которая пока не собрана и не проверена.<br />
 
 Схема, плата и прошивка на <a href="https://github.com/Leancher/AL.Car.StartingEngine">GitHub</a><br />
-<%
-    Response.Write("<img src='../" + Config.ContentPhotoFolder + "/Project01-01.jpg' />")
-%>
+
+<asp:Image ImageUrl="~/Pictures/Content/Project01-01.jpg" runat="server" />

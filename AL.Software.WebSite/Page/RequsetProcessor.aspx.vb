@@ -14,8 +14,34 @@ Partial Class Page_PhotoProcessor
         If Command = "ListPhoto" Then ResponseString = GetListPhoto()
         If Command = "DescriptionPhoto" Then ResponseString = GetDataFromExif()
         If Command = "DescriptionAlbum" Then ResponseString = GetDescriptionAlbum()
+        If Command = "GetCountView" Then ResponseString = GetCountView()
         Response.Write(ResponseString)
     End Sub
+    Private Function GetCountView() As String
+        Dim Index As Integer = 0
+        Dim ResponseString As String = ""
+        Dim CountCategory As Integer
+        Dim CountItemCategory As Integer
+        Dim CountView As String
+        Database.DatabaseOpen()
+        CountCategory = Database.GetCountItem(Config.CategoryTable)
+        For NumberCategory = 1 To CountCategory
+            Dim CategoryName = Database.GetItemByID(Config.CategoryTable, NumberCategory, "Name")
+            CountItemCategory = Database.GetCountItem(CategoryName)
+            Dim NumberItem As Integer
+            For NumberItem = 1 To CountItemCategory
+                CountView = Database.GetItemByID(CategoryName, NumberItem, "Viewed")
+                If CountView <> "0" Then
+                    Dim item = Database.GetItemByID(CategoryName, NumberItem, "Caption") + ">" + CountView
+                    ResponseString = ResponseString + ";" + item
+                End If
+            Next NumberItem
+        Next NumberCategory
+        ResponseString = Right(ResponseString, ResponseString.Length - 1)
+        Database.DatabaseClose()
+        Return ResponseString
+    End Function
+
     Private Function GetListPhoto() As String
         Dim ResponseString As String = ""
         Dim Index As Integer = 0

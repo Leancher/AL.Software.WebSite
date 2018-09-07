@@ -16,40 +16,38 @@
         const Request = new XMLHttpRequest();
         Request.open('GET', 'Page/RequsetProcessor.aspx?Command=GetCountView', true);
         Request.onreadystatechange = () => {
-            if (Request.readyState == 4) {
+            if (Request.readyState === 4) {
                 const responseString = Request.responseText;
                 showData(responseString);
             }
-        }
+        };
         Request.send();
     };
 
+    const listProcess = (list) => {
+        return list.split("|").map((item) => {
+            const objItem = item.split(";");
+            return { categoryName: objItem[0], numberItem: objItem[1], caption: objItem[2], count: objItem[3] };
+        }).sort((a, b) => b.count - a.count);
+    };
+
     const showData = (responseString) => {
-        let rawList = responseString.split(";");
-        const listCountView = rawList.map((item) => {
-            const objItem = item.split(">");
-            return { name: objItem[0], count: objItem[1] };
-        });
-        listCountView.sort((a, b) => b.count - a.count);
+        const listCountView = listProcess(responseString);
         const len = listCountView.length;
         for (const index in listCountView) {
             const curItem = currentDocument.createElement('label');
-            curItem.innerHTML = listCountView[index].name + ' - ' + listCountView[index].count + '<br>';
-            if (index < len / 2) {
-                statBlock1.appendChild(curItem);
-            }
-            else {
-                statBlock2.appendChild(curItem);
-            } 
-        };
+            const navigateUrl = '/Default.aspx?category=' + listCountView[index].categoryName + '&ID=' + listCountView[index].numberItem;
+            curItem.innerHTML = '<a href="' + navigateUrl + '">' + listCountView[index].caption + '</a> - ' + listCountView[index].count + '<br>';
+            index < len / 2 ? statBlock1.appendChild(curItem) : statBlock2.appendChild(curItem);
+        }
     };
     document.addEventListener('DOMContentLoaded', showContent);
 
 </script>
 <table style="width:100%">
     <tr>
-        <td id="Column1" style="width:50%"></td>
-        <td id="Column2" style="width:50%"></td>
+        <td id="Column1" style="width:50%"/>
+        <td id="Column2" style="width:50%"/>
     </tr>
 </table>
 <div id="StatBlock"/>

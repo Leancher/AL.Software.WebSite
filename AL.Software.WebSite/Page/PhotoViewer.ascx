@@ -4,10 +4,9 @@
 
     var PhotoPlace, SinglePhoto, LinkFullSize;
     var CurrentDocument;
-    var NumberAlbum;
-    var CategoryAlbum;
     var ListPhotos, ListDescPhoto, DescrAlbum;
     var BtNext, BtPrev, ReturnBack, CurrentNumberPhoto, DescBlock;
+    let pageValue = { category: '', ID: '' };
     
     function ShowContent() {
         CurrentDocument = document;
@@ -23,65 +22,60 @@
         GetListPhoto();
     }
 
-    function GetQueryString() {
-        var pairs = location.search.substring(1).split("&");
-        for (var i = 0; i < pairs.length; i++)
-        {
-            var pos = pairs[i].indexOf('=');
-		    if (pos == -1) continue;
-            var name = pairs[i].substring(0, pos);
-            var value = pairs[i].substring(pos + 1);
-            if (name == 'category') CategoryAlbum = value;
-            if (name == 'ID') NumberAlbum = value;
-        }
-    }
+    const GetQueryString = () => {
+        const queryString = location.search.substring(1).split("&");
+        queryString.map(item => {
+            const objItem = item.split('=');
+            pageValue[objItem[0]] = objItem[1];
+        });
+    };
    
     function GetListPhoto() {
         var Request = new XMLHttpRequest();
-        Request.open('GET', 'Page/RequsetProcessor.aspx?Command=ListPhoto&Category=' + CategoryAlbum + '&Album=' + NumberAlbum, true);
+        Request.open('GET', 'Page/RequsetProcessor.aspx?Command=ListPhoto&Category=' + pageValue.category + '&Album=' + pageValue.ID, true);
         Request.onreadystatechange = function () {
-            if (Request.readyState == 4) {
+            if (Request.readyState === 4) {
                 var ResponseString = Request.responseText;
                 ListPhotos = ResponseString.split(";");
                 //Если файлов нет и строка пустая, список равен нулю
-                if (ResponseString == '') ListPhotos = 0;
+                if (ResponseString === '') ListPhotos = 0;
                 //SetPhotoGrid();
-                if (NumberAlbum == 6) {
-                    GetDescription()
+                if (pageValue.ID === 6) {
+                    GetDescription();
                 }
                 else {
                     SetPhotoGrid();
-                }                
+                }
             }
-        }
+        };
         Request.send();
     }
 
     function GetDescription() {
         var Request = new XMLHttpRequest();
-        Request.open('GET', 'Page/RequsetProcessor.aspx?Command=DescriptionPhoto&Category=' + CategoryAlbum + '&Album=' + NumberAlbum, true);
+        Request.open('GET', 'Page/RequsetProcessor.aspx?Command=DescriptionPhoto&Category=' + pageValue.category + '&Album=' + pageValue.ID, true);
         Request.onreadystatechange = function () {
-            if (Request.readyState == 4) {
+            if (Request.readyState === 4) {
                 var ResponseString = Request.responseText;
                 ListDescPhoto = ResponseString.split(";");
                 //Если данных нет и строка пустая, список равен нулю
-                if (ResponseString == '') ListDescPhoto = 0;
-                GetDescriptionAlbum();               
+                if (ResponseString === '') ListDescPhoto = 0;
+                GetDescriptionAlbum();
             }
-        }
+        };
         Request.send();
     }
 
     function GetDescriptionAlbum() {
         var Request = new XMLHttpRequest();
-        Request.open('GET', 'Page/PhotoProcessor.aspx?Command=DescriptionAlbum&Category=' + CategoryAlbum + '&Album=' + NumberAlbum, true);
+        Request.open('GET', 'Page/PhotoProcessor.aspx?Command=DescriptionAlbum&Category=' + pageValue.category + '&Album=' + pageValue.ID, true);
         Request.onreadystatechange = function () {
-            if (Request.readyState == 4) {
+            if (Request.readyState === 4) {
                 var ResponseString = Request.responseText;
                 DescrAlbum = ResponseString;
-                SetPhotoGrid();               
+                SetPhotoGrid();
             }
-        }
+        };
         Request.send();
     }
 
@@ -96,7 +90,7 @@
         //Создаем пустой блок
         PhotoPlace = CurrentDocument.createElement('div');
         //Если список фоток пуст, то пишем, что нет картинок
-        if (ListPhotos == 0)
+        if (ListPhotos === 0)
         {
             PhotoPlace.innerText = "В этом альбоме нет картинок";
         }
@@ -107,7 +101,7 @@
                 var PhotoCell = CurrentDocument.createElement('div');
                 PhotoCell.className = 'PhotoCell';
                 var img = CurrentDocument.createElement('img');
-                img.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + 'Preview/' + ListPhotos[i];
+                img.src = 'Pictures/' + pageValue.category + '/album' + pageValue.ID + 'Preview/' + ListPhotos[i];
                 var lnk = CurrentDocument.createElement('a');
                 //Через хэш в адресной строке передаем номер картинки
                 lnk.href = '#' + i;
@@ -118,7 +112,7 @@
                 }
                 lnk.appendChild(img);       
                 PhotoCell.appendChild(lnk);
-                if (ListDescPhoto != 0) {
+                if (ListDescPhoto !== 0) {
                     var DescPhoto = CurrentDocument.createElement('span');
                     DescPhoto.innerText = ListDescPhoto[i];
                     PhotoCell.appendChild(DescPhoto);
@@ -140,11 +134,11 @@
         PhotoPlace = CurrentDocument.createElement('div');
         //Создаем ссылку на картинку в полном размере
         LinkFullSize = CurrentDocument.createElement('a');
-        LinkFullSize.href = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[PhotoNumber];
+        LinkFullSize.href = 'Pictures/' + pageValue.category + '/album' + pageValue.ID + '/' + ListPhotos[PhotoNumber];
         //Создаем картинку
         SinglePhoto = CurrentDocument.createElement('img');
         SinglePhoto.className = 'CurrentPhoto';
-        SinglePhoto.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[PhotoNumber];
+        SinglePhoto.src = 'Pictures/' + pageValue.category + '/album' + pageValue.ID + '/' + ListPhotos[PhotoNumber];
         //Добавляем в тело ссылки картинку
         LinkFullSize.appendChild(SinglePhoto);
         PhotoPlace.appendChild(LinkFullSize);
@@ -155,15 +149,15 @@
     function BtNext_Click(event) {
         CurrentNumberPhoto = CurrentNumberPhoto + 1;  
         if (CurrentNumberPhoto > ListPhotos.length - 1) CurrentNumberPhoto = ListPhotos.length - 1;
-        LinkFullSize.href = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto];
-        SinglePhoto.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto];
+        LinkFullSize.href = 'Pictures/' + pageValue.category + '/album' + pageValue.ID + '/' + ListPhotos[CurrentNumberPhoto];
+        SinglePhoto.src = 'Pictures/' + pageValue.category + '/album' + pageValue.ID + '/' + ListPhotos[CurrentNumberPhoto];
         event.preventDefault();        
     }
     function BtPrev_Click(event) {
         CurrentNumberPhoto = CurrentNumberPhoto - 1;
         if (CurrentNumberPhoto < 0) CurrentNumberPhoto = 0;
-        LinkFullSize.href = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto];
-        SinglePhoto.src = 'Pictures/' + CategoryAlbum + '/album' + NumberAlbum + '/' + ListPhotos[CurrentNumberPhoto];
+        LinkFullSize.href = 'Pictures/' + pageValue.category + '/album' + pageValue.ID + '/' + ListPhotos[CurrentNumberPhoto];
+        SinglePhoto.src = 'Pictures/' + pageValue.category + '/album' + pageValue.ID + '/' + ListPhotos[CurrentNumberPhoto];
         event.preventDefault();
     }
 </script>

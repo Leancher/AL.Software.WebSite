@@ -32,8 +32,9 @@ Partial Class Page_PhotoProcessor
             For NumberItem = 1 To CountItemCategory
                 CountView = Database.GetItemByID(CategoryName, NumberItem, "Viewed")
                 If CountView <> "0" Then
-                    Dim item = Database.GetItemByID(CategoryName, NumberItem, "Caption") + ">" + CountView
-                    ResponseString = ResponseString + ";" + item
+                    Dim Caption = Database.GetItemByID(CategoryName, NumberItem, "Caption")
+                    Dim item = CategoryName + ";" + NumberItem.ToString + ";" + Caption + ";" + CountView
+                    ResponseString = ResponseString + "|" + item
                 End If
             Next NumberItem
         Next NumberCategory

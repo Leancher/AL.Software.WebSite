@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Statistics.ascx.vb" Inherits="Page_Statistics" %>
 <script type="text/javascript">
-   
+
     let currentDocument = '';
     let statBlock;
 
@@ -14,7 +14,7 @@
 
     const getCountView = () => {
         const Request = new XMLHttpRequest();
-        Request.open('GET', 'Page/RequsetProcessor.aspx?Command=GetCountView', true);
+        Request.open('GET', 'Page/RequestProcessor.aspx?Command=GetCountView', true);
         Request.onreadystatechange = () => {
             if (Request.readyState === 4) {
                 const responseString = Request.responseText;

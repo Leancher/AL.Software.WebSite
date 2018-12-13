@@ -32,7 +32,7 @@
    
     function GetListPhoto() {
         var Request = new XMLHttpRequest();
-        Request.open('GET', 'Page/RequsetProcessor.aspx?Command=ListPhoto&Category=' + pageValue.category + '&Album=' + pageValue.ID, true);
+        Request.open('GET', 'Page/RequestProcessor.aspx?Command=ListPhoto&Category=' + pageValue.category + '&Album=' + pageValue.ID, true);
         Request.onreadystatechange = function () {
             if (Request.readyState === 4) {
                 var ResponseString = Request.responseText;
@@ -53,7 +53,7 @@
 
     function GetDescription() {
         var Request = new XMLHttpRequest();
-        Request.open('GET', 'Page/RequsetProcessor.aspx?Command=DescriptionPhoto&Category=' + pageValue.category + '&Album=' + pageValue.ID, true);
+        Request.open('GET', 'Page/RequestProcessor.aspx?Command=DescriptionPhoto&Category=' + pageValue.category + '&Album=' + pageValue.ID, true);
         Request.onreadystatechange = function () {
             if (Request.readyState === 4) {
                 var ResponseString = Request.responseText;

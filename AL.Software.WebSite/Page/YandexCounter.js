@@ -7,7 +7,9 @@
                     trackLinks:true,
                     accurateTrackBounce:true
                 });
-            } catch(e) { }
+            }
+            catch (e) {
+            }
         });
 
         var n = d.getElementsByTagName("script")[0],
